@@ -1,0 +1,32 @@
+# === Secrets — NEVER commit (this repo is PUBLIC) ===
+.env
+.env*.local
+.env.local
+
+# === Pre-build planning docs — kept local, not published ===
+archive/
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+
+# next.js build output
+/.next/
+/out/
+/build
+next-env.d.ts
+*.tsbuildinfo
+
+# vercel
+.vercel
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# macOS
+.DS_Store
