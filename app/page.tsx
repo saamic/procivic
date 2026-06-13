@@ -14,17 +14,20 @@ export default function Home() {
           Your ballot, <GradientText>decoded</GradientText>.
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-muted-foreground sm:text-xl">
-          See how your <em>actual</em> ballot fits your values — backed by votes and
-          money, not talking points. Every recommendation comes with a confidence score
-          and a cited, reviewable breakdown.
+          See how your <em>actual</em> ballot — the June 2026 San Francisco primary —
+          fits your values, backed by votes and money, not talking points. Every
+          recommendation comes with a confidence score and a cited, reviewable breakdown.
         </p>
       </div>
 
       <div className="flex flex-wrap items-center justify-center gap-3">
         <Button asChild variant="gradient" size="lg">
-          <Link href="/brand">
-            Explore the design system <ArrowRight className="h-4 w-4" />
+          <Link href="/quiz">
+            Decode my ballot <ArrowRight className="h-4 w-4" />
           </Link>
+        </Button>
+        <Button asChild variant="outline" size="lg">
+          <Link href="/ballot">See the ballot</Link>
         </Button>
       </div>
 
@@ -32,7 +35,7 @@ export default function Home() {
         {[
           { icon: Scale, title: "Personalized", body: "Your values vs. the public record — never our opinion." },
           { icon: ShieldCheck, title: "Cited & verified", body: "Every claim traces to a source; data is precomputed + verified." },
-          { icon: Network, title: "Follow the money", body: "An interactive funding graph for every Tier-1 candidate." },
+          { icon: Network, title: "Follow the money", body: "An interactive funding graph straight from FEC + SF-Ethics filings." },
         ].map((f) => (
           <div key={f.title} className="glass rounded-xl p-5 text-left">
             <f.icon className="h-6 w-6 text-brand-500" />
@@ -41,6 +44,12 @@ export default function Home() {
           </div>
         ))}
       </div>
+
+      <footer className="mt-2 text-xs text-muted-foreground">
+        <Link href="/methodology" className="underline-offset-2 hover:text-brand-700 hover:underline">
+          How it works
+        </Link>
+      </footer>
     </main>
   );
 }

@@ -1,9 +1,11 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { Network, Vote as VoteIcon } from "lucide-react";
+import { MessageSquareQuote, Network } from "lucide-react";
 import { getCandidate, listCandidateSlugs } from "@/lib/candidates";
 import { ProfileShell, ProfileSection } from "@/components/shared/ProfileShell";
 import { CandidateEvidence } from "@/components/profile/CandidateEvidence";
+import { CandidateAccountability } from "@/components/profile/CandidateAccountability";
+import { ProfileAsk } from "@/components/profile/ProfileAsk";
 import { FundingGraphInteractive } from "@/components/profile/FundingGraphInteractive";
 import { FundingGraph } from "@/components/shared/FundingGraph";
 import { Badge } from "@/components/ui/badge";
@@ -79,6 +81,25 @@ export default async function CandidatePage({
             sourceUrl={c.funding.sourceUrl}
           />
         </div>
+      </ProfileSection>
+
+      <CandidateAccountability slug={slug} />
+
+      <ProfileSection
+        title="Ask about their record"
+        icon={MessageSquareQuote}
+        description="Grounded, cited answers drawn only from this candidate's votes, funding, and stated positions."
+      >
+        <ProfileAsk
+          entityType="candidate"
+          slug={c.slug}
+          entityName={c.name}
+          starters={[
+            "How did they vote on housing?",
+            "Who are their biggest donors?",
+            "Are their votes consistent with what they've said?",
+          ]}
+        />
       </ProfileSection>
     </ProfileShell>
   );

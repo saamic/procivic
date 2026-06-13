@@ -1,12 +1,13 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { FileText, Network, Scale } from "lucide-react";
+import { FileText, MessageSquareQuote, Network, Scale } from "lucide-react";
 
 import { getMeasure, listMeasureSlugs } from "@/lib/measures";
 import { ProfileShell, ProfileSection } from "@/components/shared/ProfileShell";
 import { FundingGraph } from "@/components/shared/FundingGraph";
 import { SourceLink } from "@/components/shared/SourceLink";
 import { MeasureAlignment } from "@/components/measure/MeasureAlignment";
+import { ProfileAsk } from "@/components/profile/ProfileAsk";
 import { Badge } from "@/components/ui/badge";
 
 // Slice 4 — measure profiles (DESIGN §11; RUBRIC E1/E2/E3). Fully static: the four SF
@@ -130,6 +131,24 @@ export default async function MeasurePage({
         description="How a YES vote lines up with your values — a calculation, not our opinion."
       >
         <MeasureAlignment slug={m.slug} />
+      </ProfileSection>
+
+      {/* Ask — grounded, cited Q&A scoped to this measure's evidence (D4/H2). */}
+      <ProfileSection
+        title="Ask about this measure"
+        icon={MessageSquareQuote}
+        description="Grounded, cited answers drawn only from this measure's summary and funding record."
+      >
+        <ProfileAsk
+          entityType="measure"
+          slug={m.slug}
+          entityName={`Prop ${m.code}`}
+          starters={[
+            "What would a YES vote do?",
+            "Who funds the YES side?",
+            "Who's opposed?",
+          ]}
+        />
       </ProfileSection>
     </ProfileShell>
   );
