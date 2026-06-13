@@ -1,0 +1,62 @@
+{
+  "id": "sf-2026-06-02-primary",
+  "jurisdiction": "San Francisco (CA-11)",
+  "date": "2026-06-02",
+  "title": "June 2, 2026 — San Francisco Consolidated Statewide Direct Primary",
+  "sourceUrls": [
+    "https://en.wikipedia.org/wiki/2026_San_Francisco_elections",
+    "https://sfelections.sfgov.org/"
+  ],
+  "items": [
+    {
+      "kind": "candidateRace",
+      "id": "us-house-ca11",
+      "office": "U.S. House of Representatives — California's 11th District",
+      "subtitle": "Open seat (Nancy Pelosi retired) · top-two primary",
+      "dataTier": 1,
+      "note": "Full primary field was 11 candidates (8 D / 2 R / 1 I). Wiener and Chan advanced to the November runoff.",
+      "candidates": [
+        { "slug": "scott-wiener", "name": "Scott Wiener", "party": "Democratic", "tier": 1, "hasProfile": true, "advanced": true },
+        { "slug": "connie-chan", "name": "Connie Chan", "party": "Democratic", "tier": 3, "hasProfile": false, "advanced": true },
+        { "slug": "saikat-chakrabarti", "name": "Saikat Chakrabarti", "party": "Democratic", "tier": 3, "hasProfile": false },
+        { "slug": "marie-hurabiell", "name": "Marie Hurabiell", "party": "Republican", "tier": 3, "hasProfile": false },
+        { "slug": "ca11-other-field", "name": "7 other candidates", "party": "various", "tier": 3, "hasProfile": false, "isFieldNote": true }
+      ]
+    },
+    {
+      "kind": "candidateRace",
+      "id": "sf-supervisor-d4",
+      "office": "SF Board of Supervisors — District 4",
+      "subtitle": "Local race",
+      "dataTier": 3,
+      "candidates": [
+        { "slug": "stephen-sherrill", "name": "Stephen Sherrill", "party": "Nonpartisan", "tier": 3, "hasProfile": false, "note": "Appointed Dec 2024; won ~70-30" },
+        { "slug": "lori-brooke", "name": "Lori Brooke", "party": "Nonpartisan", "tier": 3, "hasProfile": false }
+      ]
+    },
+    {
+      "kind": "candidateRace",
+      "id": "sf-supervisor-d8",
+      "office": "SF Board of Supervisors — District 8",
+      "subtitle": "Local race",
+      "dataTier": 3,
+      "candidates": [
+        { "slug": "phil-kim", "name": "Phil Kim", "party": "Nonpartisan", "tier": 3, "hasProfile": false, "note": "Incumbent; won ~63%" }
+      ]
+    },
+    {
+      "kind": "candidateRace",
+      "id": "ca-governor",
+      "office": "Governor of California",
+      "subtitle": "Statewide primary",
+      "dataTier": 3,
+      "candidates": [
+        { "slug": "ca-governor-field", "name": "Statewide primary field", "party": "various", "tier": 3, "hasProfile": false, "isFieldNote": true }
+      ]
+    },
+    { "kind": "measure", "id": "prop-a", "measureSlug": "prop-a-earthquake-bond", "code": "A", "dataTier": 2 },
+    { "kind": "measure", "id": "prop-b", "measureSlug": "prop-b-term-limits", "code": "B", "dataTier": 2 },
+    { "kind": "measure", "id": "prop-c", "measureSlug": "prop-c-small-business-tax-cuts", "code": "C", "dataTier": 2 },
+    { "kind": "measure", "id": "prop-d", "measureSlug": "prop-d-business-tax", "code": "D", "dataTier": 2 }
+  ]
+}
