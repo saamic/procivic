@@ -361,6 +361,7 @@ Every candidate and measure profile has an **Ask** affordance: the user types a 
 
 ### 13.1 Vertical slices (each independently demo-able; cut from the bottom if time runs short)
 
+0. **Brand & design-system foundation** — `BRAND.md` (palette: light-blue/purple/red, gradient + blur tokens, type, logo, icons) + the themed design system (Tailwind tokens + shadcn + base primitives + the §11 shared components). **Build FIRST** so every later slice ships polished. Kickoff: `kickoff-slice-0-brand.md`; orchestration: `ORCHESTRATION.md`.
 1. **Tier-1 candidate profile** — clean federal/state data: identity + votes + vote-derived stances + funding graph, deployed & verified. *Ships by midday.*
 2. **Quiz → alignment + confidence** on that candidate (live re-scoring).
 3. **Full ballot view** — every June-2026 SF item listed, each with a recommendation pill + why → drill-in. **(Goal 2 — the spine.)**
@@ -368,7 +369,7 @@ Every candidate and measure profile has an **Ask** affordance: the user types a 
 5. **Consistency + transparency** (Tier-1) + the **receipt** + **AI rationale** + the **Ask-a-profile grounded Q&A** (reuses the §8 evidence bundle).
 6. **UI polish pass + methodology page + share card.** **(Goal 3.)**
 
-> Slices 1–3 are the real target (a personalized ballot with deep profiles + funding graph). 4–6 are layered wins. You always have a complete, beautiful, demo-able product.
+> **Slice 0 (brand) is the foundation** — it makes slices 1–6 look finished *as they're built* (replacing the old "polish last" approach). Slices 1–3 are the real target (a personalized ballot with deep profiles + funding graph); 4–6 are layered wins. You always have a complete, beautiful, demo-able product.
 
 ### 13.2 The loop (Autonomy + Orchestration)
 
