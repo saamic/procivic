@@ -20,6 +20,7 @@ import { BallotItemCard } from "@/components/shared/BallotItemCard";
 import { FundingGraph } from "@/components/shared/FundingGraph";
 import { WhyBreakdown } from "@/components/shared/WhyBreakdown";
 import { CitedAnswer } from "@/components/shared/CitedAnswer";
+import { CitationChip } from "@/components/shared/CitationChip";
 import { AskPanel } from "@/components/shared/AskPanel";
 import { ProfileShell, ProfileSection } from "@/components/shared/ProfileShell";
 
@@ -323,6 +324,12 @@ export default function BrandPage() {
                   { label: "OpenStates — SB 50 roll-call", href: "https://openstates.org" },
                 ]}
               />
+              <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-border pt-3 text-sm text-muted-foreground">
+                <span>Standalone citation chips:</span>
+                <CitationChip index={1} href="https://openstates.org" title="OpenStates roll-call" />
+                <CitationChip index={2} href="https://www.fec.gov" title="OpenFEC record" />
+                <CitationChip index={3} title="unlinked marker" />
+              </div>
             </CardContent>
           </Card>
         </div>
