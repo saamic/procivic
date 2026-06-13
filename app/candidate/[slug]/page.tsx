@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { MessageSquareQuote, Network } from "lucide-react";
+import { Network } from "lucide-react";
 import { getCandidate, listCandidateSlugs } from "@/lib/candidates";
 import { ProfileShell, ProfileSection } from "@/components/shared/ProfileShell";
 import { CandidateEvidence } from "@/components/profile/CandidateEvidence";
 import { CandidateAccountability } from "@/components/profile/CandidateAccountability";
-import { ProfileAsk } from "@/components/profile/ProfileAsk";
+import { AskOverlay } from "@/components/profile/AskOverlay";
 import { FundingGraphInteractive } from "@/components/profile/FundingGraphInteractive";
 import { FundingGraph } from "@/components/shared/FundingGraph";
 import { RoleBadge } from "@/components/profile/RoleBadge";
@@ -92,18 +92,16 @@ export default async function CandidatePage({
 
       <CandidateAccountability slug={slug} />
 
-      <ProfileSection title="Ask about their record" icon={MessageSquareQuote}>
-        <ProfileAsk
-          entityType="candidate"
-          slug={c.slug}
-          entityName={c.name}
-          starters={[
-            "How did they vote on housing?",
-            "Who are their biggest donors?",
-            "Are their votes consistent with what they've said?",
-          ]}
-        />
-      </ProfileSection>
+      <AskOverlay
+        entityType="candidate"
+        slug={c.slug}
+        entityName={c.name}
+        starters={[
+          "How did they vote on housing?",
+          "Who are their biggest donors?",
+          "Are their votes consistent with what they've said?",
+        ]}
+      />
     </ProfileShell>
   );
 }

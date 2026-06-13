@@ -83,14 +83,10 @@ export default function Home() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
       <header className="text-center">
-        <Logo variant="wordmark" className="mx-auto h-9 w-auto" />
+        <Logo variant="wordmark" className="mx-auto h-14 w-auto sm:h-16" />
         <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
           Your ballot, <GradientText>decoded</GradientText>.
         </h1>
-        <p className="mx-auto mt-2 max-w-xl text-muted-foreground">
-          Pick an election in San Francisco &amp; California — view the ballot, or align it to
-          your values. Backed by votes and money, every claim cited.
-        </p>
       </header>
 
       <section className="mt-10">

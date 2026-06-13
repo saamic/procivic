@@ -69,9 +69,28 @@ function itemLean(
   return recommendCandidateRace(item, user) ? "pick" : null;
 }
 
+/**
+ * Display-order rank for a ballot item (DESIGN intent: marquee race → measures → down-ballot).
+ * Lower sorts first: the CA-11 marquee race (0), then all measures (1), then the remaining
+ * Tier-3 candidate races (2). Used with a STABLE sort so original order is preserved within
+ * each group and nothing is dropped (RUBRIC C1). Canonical enumeration stays in data/ballot.json.
+ */
+function displayRank(item: BallotItem): number {
+  if (item.id === "us-house-ca11") return 0;
+  if (item.kind === "measure") return 1;
+  return 2;
+}
+
 export default function BallotClient() {
   const ballot = getBallot();
   const { values, ready, hasVector } = useUserValues();
+
+  // Stable display order: marquee race → measures → down-ballot races. Array#sort is stable in
+  // modern engines, so items within a rank keep their data/ballot.json order. Counts/tally below
+  // are order-independent, so they continue to read from ballot.items.
+  const orderedItems = [...ballot.items].sort(
+    (a, b) => displayRank(a) - displayRank(b),
+  );
 
   // SSR / pre-hydration: stable skeleton so recommendations never flash a wrong (empty-vector)
   // verdict before localStorage loads.
@@ -163,7 +182,7 @@ export default function BallotClient() {
       )}
 
       <ol className="mt-8 space-y-3">
-        {ballot.items.map((item) => {
+        {orderedItems.map((item) => {
           if (item.kind === "measure") {
             const rec = recommendMeasure(item.measureSlug, values);
             return (
