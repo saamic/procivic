@@ -118,10 +118,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="mt-10 space-y-2 text-center text-xs text-muted-foreground">
-        <p>
-          Voter statuses (Registered, Voted) are illustrative — not real voter data.
-        </p>
+      <footer className="mt-10 text-center text-xs text-muted-foreground">
         <Link
           href="/methodology"
           className="underline-offset-2 hover:text-brand-700 hover:underline"
