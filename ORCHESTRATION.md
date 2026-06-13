@@ -1,6 +1,8 @@
 # Procivic — Orchestration Playbook (for the execution agent)
 
 > How to build Procivic with maximal, **correct** agentification. Read alongside `BRIEF.md`, `DESIGN.md`, `RUBRIC.md`, `NOTES.md`, `config/`. The build runs in Claude Code inside `Procivic/` with **`/goal RUBRIC.md`**.
+>
+> **Fresh session?** Paste `START-HERE.md`. **Per-slice verifier prompts:** `verifier-prompts.md`.
 
 ## The three primitives — use the right one
 - **`/goal RUBRIC.md`** — the **outer loop** for this session: hillclimb until every gate passes; **never self-certify**. This is the Autonomy story.
