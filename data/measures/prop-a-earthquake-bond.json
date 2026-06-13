@@ -53,6 +53,13 @@
     "dataLoadedAt": "2026-05-30",
     "notes": "Support total = monetary contributions (FPPC Form 460 Line 1, cumulative) for the registered 'Yes on A' committee (filer_nid 215726436); cross-verified by summing the committee's 90 itemized Schedule A transactions, which equal $1,633,500 exactly. No financed opposition committee registered against the earthquake bond in DataSF (the only active 'No on A' committee, filer_nid 212872841, is 'No on A, Stop the Engardio Recall' — an unrelated measure on a different ballot). Opposition to Prop A was grassroots/unfinanced (label: oppose funding unavailable / $0 reported)."
   },
+  "result": {
+    "outcome": "PASSED",
+    "yesPct": 77,
+    "noPct": 23,
+    "sourceUrl": "https://localnewsmatters.org/2026/06/03/sf-prop-a-earthquake-safety-bond-leading/",
+    "note": "Required a two-thirds (66.67%) supermajority and crossed it comfortably. Percentages (~77% YES / ~23% NO) are from the initial post-election count reported June 3, 2026 (125,086 of an estimated ~247,000 ballots counted, 122,400 still to tally); exact certified percentages and final vote counts were not available from a source at time of writing."
+  },
   "dataTier": 2,
   "meta": {
     "fundingSource": "SF Ethics via DataSF SODA — Filers 4c8t-ngau, Summary Totals 9ggq-m8hp, Transactions pitq-e56w",

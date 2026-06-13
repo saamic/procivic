@@ -12,7 +12,7 @@
     "https://media.api.sf.gov/documents/20260212_CharterAmendment_Term_Limits.pdf",
     "https://www.kqed.org/voterguide/sanfrancisco/proposition-b"
   ],
-  "yesPosition": [
+  "yesPositions": [
     {
       "issue": "govt_reform",
       "value": 1,

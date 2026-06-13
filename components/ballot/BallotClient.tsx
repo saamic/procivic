@@ -197,10 +197,34 @@ export default function BallotClient() {
             );
           }
 
-          // No scorable candidate. Two honest sub-cases — never silently dropped (C1):
-          //   • a candidate has a profile (so we can still link) but no scored record yet, or
-          //   • the whole race is Tier-3 with no standardized data.
+          // No scorable recommendation. Two honest sub-cases — never silently dropped (C1):
+          //   • the race HAS a profiled/deep-record candidate (e.g. Tier-1 Wiener): we can't
+          //     yet show a decoded pick (no user vector), but it is NOT "data unavailable" —
+          //     link the card to that candidate's profile, label by their tier, and show the
+          //     card's built-in "Take the quiz to decode" placeholder (recommendation omitted).
+          //   • the whole race is Tier-3 with no profiled candidate: keep the honest
+          //     `dataUnavailable` + "Tier 3" labeling.
           const profiled = item.candidates.find((c) => c.hasProfile);
+
+          if (profiled) {
+            const tierLabel =
+              profiled.tier === 1
+                ? "Tier 1 · deep record"
+                : `Tier ${profiled.tier} · funding/positions only`;
+            return (
+              <li key={item.id}>
+                <BallotItemCard
+                  variant="candidate"
+                  title={item.office}
+                  subtitle={item.subtitle}
+                  href={`/candidate/${profiled.slug}`}
+                  tierLabel={tierLabel}
+                  why="Deep voting + funding record — take the quiz to see your match."
+                />
+              </li>
+            );
+          }
+
           const why = hasVector
             ? "Standardized record not available — labeled honestly."
             : "Standardized record not available for this race — labeled honestly.";
@@ -211,7 +235,7 @@ export default function BallotClient() {
                 variant="candidate"
                 title={item.office}
                 subtitle={item.subtitle}
-                href={profiled ? `/candidate/${profiled.slug}` : "/ballot"}
+                href="/ballot"
                 tierLabel="Tier 3 · funding/positions only"
                 dataUnavailable
                 why={why}
