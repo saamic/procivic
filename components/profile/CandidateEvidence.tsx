@@ -2,14 +2,14 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Scale, Quote, Gavel, Compass, Users } from "lucide-react";
+import { Scale, Gavel, Quote } from "lucide-react";
 import type { Stance, Vote, Statement } from "@/lib/types";
-import type { Issue } from "@/config/issues";
 import { ISSUES } from "@/config/issues";
 import { ProfileSection } from "@/components/shared/ProfileShell";
 import { IssueBadge } from "@/components/shared/IssueBadge";
 import { SourceLink } from "@/components/shared/SourceLink";
 import { StanceBar } from "@/components/shared/StanceBar";
+import { VoteRow } from "@/components/shared/VoteRow";
 import {
   Accordion,
   AccordionItem,
@@ -19,20 +19,7 @@ import {
 import { useUserValues } from "@/lib/userValues";
 import { cn } from "@/lib/utils";
 
-/**
- * Derive a concise, plain-language reading of a vote-derived stance value in [-1, 1].
- * The pole is the descriptive coordinate the candidate leans toward (NOT a value
- * judgment); strength buckets keep the readout scannable.
- */
-function describeStance(v: number, issue: Issue): string {
-  const mag = Math.abs(v);
-  const pole = v > 0 ? issue.polePos : issue.poleNeg;
-  if (mag >= 0.66) return `Strongly favors: ${pole}`;
-  if (mag >= 0.25) return `Leans: ${pole}`;
-  return "Mixed / no clear lean";
-}
-
-/** A small label for one part of the card (Said / Voted / What it means / How it aligns). */
+/** A small label for one part of the card (Voting history / Statement history). */
 function PartLabel({
   icon: Icon,
   children,
@@ -75,10 +62,11 @@ function alignment(
 }
 
 /**
- * Tier-1 candidate evidence (DESIGN §11; RUBRIC D1/D2/G3): ONE rich per-issue section that
- * merges what the candidate SAID with how they VOTED, the plain-language meaning of the
- * vote-derived stance, and how that stance aligns with the visitor's own values. Every
- * factual claim carries its source; the alignment readout requires the client value vector.
+ * Tier-1 candidate evidence (DESIGN §11; RUBRIC D1/D2/G3): ONE rich per-issue section.
+ * The collapsed header surfaces how the candidate's vote-derived stance ALIGNS with the
+ * visitor — the agreement label plus a StanceBar comparing them — so the takeaway is
+ * visible without expanding. Expanding reveals the underlying RECORD: the roll-call
+ * voting history and any statement history, each carrying its source.
  */
 export function CandidateEvidence({
   stances,
@@ -115,8 +103,9 @@ export function CandidateEvidence({
           <>
             <Accordion type="multiple" className="space-y-3">
               {rows.map(({ issue, stance }) => {
-                const statement = statements?.find((s) => s.issue === issue.id);
-                const vote = votes.find((v) => v.issue === issue.id);
+                const issueVotes = votes.filter((v) => v.issue === issue.id);
+                const issueStatements =
+                  statements?.filter((s) => s.issue === issue.id) ?? [];
                 const userStance = values.stances[issue.id];
                 const hasUserStance =
                   ready && hasVector && typeof userStance === "number";
@@ -144,81 +133,79 @@ export function CandidateEvidence({
                           </span>
                         ) : (
                           <span className="text-[11px] font-medium text-muted-foreground">
-                            Take the quiz to compare
+                            How it aligns with you
                           </span>
                         )}
                       </span>
                     </AccordionTrigger>
 
-                    <AccordionContent>
-                      <div className="grid gap-x-6 gap-y-3 sm:grid-cols-2">
-                        {/* Said */}
-                        <div className="space-y-1">
-                          <PartLabel icon={Quote}>Said</PartLabel>
-                          {statement ? (
-                            <p className="text-sm leading-snug text-foreground">
-                              &ldquo;{statement.text}&rdquo;{" "}
-                              <SourceLink href={statement.sourceUrl} className="align-baseline">
-                                source
-                              </SourceLink>
-                            </p>
+                    {/* Always-visible alignment readout — stays shown when collapsed. */}
+                    <div className="pb-4">
+                      {hasUserStance ? (
+                        <StanceBar
+                          value={stance.value}
+                          compareValue={userStance}
+                          poleNeg={issue.poleNeg}
+                          polePos={issue.polePos}
+                          entityLabel="Wiener"
+                          compareLabel="You"
+                        />
+                      ) : (
+                        <p className="text-sm text-muted-foreground">
+                          <Link
+                            href="/quiz"
+                            className="font-medium text-brand-600 underline-offset-2 hover:text-brand-700 hover:underline"
+                          >
+                            Take the quiz
+                          </Link>{" "}
+                          to see how this aligns with you.
+                        </p>
+                      )}
+                    </div>
+
+                    <AccordionContent className="border-t border-border pt-3">
+                      <div className="space-y-4">
+                        {/* Voting history */}
+                        <div className="space-y-2">
+                          <PartLabel icon={Gavel}>Voting history</PartLabel>
+                          {issueVotes.length > 0 ? (
+                            <div className="space-y-2">
+                              {issueVotes.map((vote) => (
+                                <VoteRow
+                                  key={`${vote.billId}-${vote.sourceUrl}`}
+                                  vote={vote}
+                                />
+                              ))}
+                            </div>
                           ) : (
                             <p className="text-sm text-muted-foreground">
-                              No public statement on record.
+                              No roll-call votes on record for this issue.
                             </p>
                           )}
                         </div>
 
-                        {/* Voted */}
-                        <div className="space-y-1">
-                          <PartLabel icon={Gavel}>Voted</PartLabel>
-                          {vote ? (
-                            <p className="text-sm leading-snug text-foreground">
-                              <span className="font-medium">{vote.position}</span> on{" "}
-                              {vote.billId} — {vote.title}{" "}
-                              <SourceLink href={vote.sourceUrl} className="align-baseline">
-                                roll-call
-                              </SourceLink>
-                            </p>
-                          ) : (
-                            <p className="text-sm text-muted-foreground">
-                              No roll-call vote on record.
-                            </p>
-                          )}
-                        </div>
-
-                        {/* What it means */}
-                        <div className="space-y-1">
-                          <PartLabel icon={Compass}>What it means</PartLabel>
-                          <p className="text-sm leading-snug text-foreground">
-                            {describeStance(stance.value, issue)}
-                          </p>
-                        </div>
-
-                        {/* How it aligns with you */}
-                        <div className="space-y-1.5">
-                          <PartLabel icon={Users}>How it aligns with you</PartLabel>
-                          {hasUserStance ? (
-                            <StanceBar
-                              value={stance.value}
-                              compareValue={userStance}
-                              poleNeg={issue.poleNeg}
-                              polePos={issue.polePos}
-                              entityLabel="Wiener"
-                              compareLabel="You"
-                            />
-                          ) : (
-                            <p className="text-sm text-muted-foreground">
-                              <Link
-                                href="/quiz"
-                                className="font-medium text-brand-600 underline-offset-2 hover:text-brand-700 hover:underline"
-                              >
-                                Take the quiz
-                              </Link>{" "}
-                              to see how this aligns with you.
-                            </p>
-                          )}
-                        </div>
+                        {/* Statement history */}
+                        {issueStatements.length > 0 && (
+                          <div className="space-y-2">
+                            <PartLabel icon={Quote}>Statement history</PartLabel>
+                            <div className="space-y-2">
+                              {issueStatements.map((statement, i) => (
+                                <blockquote
+                                  key={`${statement.sourceUrl}-${i}`}
+                                  className="border-l-2 border-brand-200 pl-3 text-sm leading-snug text-foreground"
+                                >
+                                  &ldquo;{statement.text}&rdquo;{" "}
+                                  <SourceLink
+                                    href={statement.sourceUrl}
+                                    className="align-baseline"
+                                  >
+                                    source
+                                  </SourceLink>
+                                </blockquote>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </AccordionContent>
                   </AccordionItem>
