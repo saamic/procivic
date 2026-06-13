@@ -1,0 +1,412 @@
+[
+  {
+    "issue": "housing",
+    "identifier": "SB 423",
+    "session": "20232024",
+    "direction": 1,
+    "note": "Streamlined/by-right multifamily housing approvals; Wiener author.",
+    "found": true,
+    "bill_id": "ocd-bill/5c713138-369c-4216-b5f5-87c03b77d484",
+    "title": "Land use: streamlined housing approvals: multifamily housing developments.",
+    "subjects": [
+      "Land use",
+      "multifamily housing developments",
+      "streamlined housing approvals"
+    ],
+    "openstates_url": "https://openstates.org/ca/bills/20232024/SB423/",
+    "n_votes": 10,
+    "wiener_option": "yes",
+    "vote_motion": "3rd Reading SB423 Wiener et al.",
+    "vote_date": "2023-05-31T07:00:00+00:00",
+    "vote_result": "pass",
+    "vote_org": "upper",
+    "vote_counts": [
+      {
+        "option": "yes",
+        "value": 29
+      },
+      {
+        "option": "no",
+        "value": 5
+      },
+      {
+        "option": "other",
+        "value": 6
+      }
+    ],
+    "vote_sources": [
+      {
+        "url": "http://leginfo.legislature.ca.gov/faces/billVotesClient.xhtml?bill_id=202320240SB423",
+        "note": ""
+      }
+    ]
+  },
+  {
+    "issue": "homelessness_safety",
+    "identifier": "SB 43",
+    "session": "20232024",
+    "direction": 1,
+    "note": "Expands conservatorship/grave-disability for severe mental illness & substance use; Wiener author. YES = more mandated treatment.",
+    "found": true,
+    "bill_id": "ocd-bill/72a40bcf-7dc1-42a0-86f1-221b39c2d54d",
+    "title": "Behavioral health.",
+    "subjects": [
+      "Behavioral health"
+    ],
+    "openstates_url": "https://openstates.org/ca/bills/20232024/SB43/",
+    "n_votes": 10,
+    "wiener_option": "yes",
+    "vote_motion": "3rd Reading SB43 Eggman et al.",
+    "vote_date": "2023-05-26T07:00:00+00:00",
+    "vote_result": "pass",
+    "vote_org": "upper",
+    "vote_counts": [
+      {
+        "option": "yes",
+        "value": 37
+      },
+      {
+        "option": "no",
+        "value": 0
+      },
+      {
+        "option": "other",
+        "value": 3
+      }
+    ],
+    "vote_sources": [
+      {
+        "url": "http://leginfo.legislature.ca.gov/faces/billVotesClient.xhtml?bill_id=202320240SB43",
+        "note": ""
+      }
+    ]
+  },
+  {
+    "issue": "business_tax",
+    "identifier": "SB 584",
+    "session": "20232024",
+    "direction": 1,
+    "note": "New 15% short-term-rental (lodging) business tax to fund affordable housing; Wiener author. YES = higher business tax.",
+    "found": true,
+    "bill_id": "ocd-bill/4dac5c91-30ac-42ea-b41b-c1893ffccd8f",
+    "title": "Laborforce housing: Short-Term Rental Tax Law.",
+    "subjects": [
+      "Laborforce housing",
+      "Short-Term Rental Tax Law"
+    ],
+    "openstates_url": "https://openstates.org/ca/bills/20232024/SB584/",
+    "n_votes": 5,
+    "wiener_option": "yes",
+    "vote_motion": "3rd Reading SB584 Lim\u00f3n et al. Urgency Clause",
+    "vote_date": "2023-05-31T07:00:00+00:00",
+    "vote_result": "pass",
+    "vote_org": "upper",
+    "vote_counts": [
+      {
+        "option": "yes",
+        "value": 27
+      },
+      {
+        "option": "no",
+        "value": 11
+      },
+      {
+        "option": "other",
+        "value": 2
+      }
+    ],
+    "vote_sources": [
+      {
+        "url": "http://leginfo.legislature.ca.gov/faces/billVotesClient.xhtml?bill_id=202320240SB584",
+        "note": ""
+      }
+    ]
+  },
+  {
+    "issue": "inequality_labor",
+    "identifier": "SB 799",
+    "session": "20232024",
+    "direction": 1,
+    "note": "Unemployment insurance eligibility for workers on strike. YES = pro-labor/worker protection.",
+    "found": true,
+    "bill_id": "ocd-bill/ba630db7-c23e-4975-889f-3fd10753b20a",
+    "title": "Unemployment insurance: trade disputes: eligibility for benefits.",
+    "subjects": [
+      "Unemployment insurance",
+      "eligibility for benefits",
+      "trade disputes"
+    ],
+    "openstates_url": "https://openstates.org/ca/bills/20232024/SB799/",
+    "n_votes": 9,
+    "wiener_option": "yes",
+    "vote_motion": "Special Consent",
+    "vote_date": "2023-05-25T07:00:00+00:00",
+    "vote_result": "pass",
+    "vote_org": "upper",
+    "vote_counts": [
+      {
+        "option": "yes",
+        "value": 40
+      },
+      {
+        "option": "no",
+        "value": 0
+      },
+      {
+        "option": "other",
+        "value": 0
+      }
+    ],
+    "vote_sources": [
+      {
+        "url": "http://leginfo.legislature.ca.gov/faces/billVotesClient.xhtml?bill_id=202320240SB799",
+        "note": ""
+      }
+    ]
+  },
+  {
+    "issue": "city_fiscal",
+    "identifier": "SB 867",
+    "session": "20232024",
+    "direction": 1,
+    "note": "Safe Drinking Water, Wildfire Prevention, Drought, Flood, Clean Air bond ($10B GO bond placed on ballot). YES = borrow & invest.",
+    "found": true,
+    "bill_id": "ocd-bill/13a5386b-3c9b-4b18-bfec-489f8386f53c",
+    "title": "Safe Drinking Water, Wildfire Prevention, Drought Preparedness, and Clean Air Bond Act of 2024.",
+    "subjects": [
+      "Safe Drinking Water, Wildfire Prevention, Drought Preparedness, and Clean Air Bond Act"
+    ],
+    "openstates_url": "https://openstates.org/ca/bills/20232024/SB867/",
+    "n_votes": 8,
+    "wiener_option": "yes",
+    "vote_motion": "3rd Reading SB867 Allen et al.",
+    "vote_date": "2023-05-31T07:00:00+00:00",
+    "vote_result": "pass",
+    "vote_org": "upper",
+    "vote_counts": [
+      {
+        "option": "yes",
+        "value": 33
+      },
+      {
+        "option": "no",
+        "value": 5
+      },
+      {
+        "option": "other",
+        "value": 2
+      }
+    ],
+    "vote_sources": [
+      {
+        "url": "http://leginfo.legislature.ca.gov/faces/billVotesClient.xhtml?bill_id=202320240SB867",
+        "note": ""
+      }
+    ]
+  },
+  {
+    "issue": "govt_reform",
+    "identifier": "SB 411",
+    "session": "20232024",
+    "direction": 1,
+    "note": "Open-meeting (Brown Act) remote-participation rules for neighborhood councils; government-transparency/access reform. YES = pro-access reform.",
+    "found": true,
+    "bill_id": "ocd-bill/f4d74746-c780-4110-ab46-10935d8d04b9",
+    "title": "Open meetings: teleconferences: neighborhood councils.",
+    "subjects": [
+      "Open meetings",
+      "neighborhood councils",
+      "teleconferences"
+    ],
+    "openstates_url": "https://openstates.org/ca/bills/20232024/SB411/",
+    "n_votes": 6,
+    "wiener_option": "yes",
+    "vote_motion": "3rd Reading SB411 Portantino et al. Urgency Clause",
+    "vote_date": "2023-05-15T07:00:00+00:00",
+    "vote_result": "pass",
+    "vote_org": "upper",
+    "vote_counts": [
+      {
+        "option": "yes",
+        "value": 30
+      },
+      {
+        "option": "no",
+        "value": 5
+      },
+      {
+        "option": "other",
+        "value": 5
+      }
+    ],
+    "vote_sources": [
+      {
+        "url": "http://leginfo.legislature.ca.gov/faces/billVotesClient.xhtml?bill_id=202320240SB411",
+        "note": ""
+      }
+    ]
+  },
+  {
+    "issue": "climate",
+    "identifier": "SB 253",
+    "session": "20232024",
+    "direction": 1,
+    "note": "Climate Corporate Data Accountability Act: mandatory corporate GHG-emissions disclosure. YES = aggressive climate action.",
+    "found": true,
+    "bill_id": "ocd-bill/860d6363-067b-4e97-8a0c-5202f3c867d0",
+    "title": "Climate Corporate Data Accountability Act.",
+    "subjects": [
+      "Climate Corporate Data Accountability Act"
+    ],
+    "openstates_url": "https://openstates.org/ca/bills/20232024/SB253/",
+    "n_votes": 9,
+    "wiener_option": "yes",
+    "vote_motion": "3rd Reading SB253 Wiener et al.",
+    "vote_date": "2023-05-30T07:00:00+00:00",
+    "vote_result": "pass",
+    "vote_org": "upper",
+    "vote_counts": [
+      {
+        "option": "yes",
+        "value": 24
+      },
+      {
+        "option": "no",
+        "value": 9
+      },
+      {
+        "option": "other",
+        "value": 7
+      }
+    ],
+    "vote_sources": [
+      {
+        "url": "http://leginfo.legislature.ca.gov/faces/billVotesClient.xhtml?bill_id=202320240SB253",
+        "note": ""
+      }
+    ]
+  },
+  {
+    "issue": "healthcare",
+    "identifier": "SB 770",
+    "session": "20232024",
+    "direction": 1,
+    "note": "Directs pursuit of federal waivers toward unified health-care financing (single-payer pathway). YES = expand govt role.",
+    "found": true,
+    "bill_id": "ocd-bill/e287c090-539d-4c6d-a426-f853c1449b68",
+    "title": "Health care: unified health care financing.",
+    "subjects": [
+      "Health care",
+      "unified health care financing"
+    ],
+    "openstates_url": "https://openstates.org/ca/bills/20232024/SB770/",
+    "n_votes": 8,
+    "wiener_option": "yes",
+    "vote_motion": "3rd Reading SB770 Wiener et al.",
+    "vote_date": "2023-05-30T07:00:00+00:00",
+    "vote_result": "pass",
+    "vote_org": "upper",
+    "vote_counts": [
+      {
+        "option": "yes",
+        "value": 30
+      },
+      {
+        "option": "no",
+        "value": 9
+      },
+      {
+        "option": "other",
+        "value": 1
+      }
+    ],
+    "vote_sources": [
+      {
+        "url": "http://leginfo.legislature.ca.gov/faces/billVotesClient.xhtml?bill_id=202320240SB770",
+        "note": ""
+      }
+    ]
+  },
+  {
+    "issue": "immigration",
+    "identifier": "SB 227",
+    "session": "20232024",
+    "direction": 1,
+    "note": "Safety Net for All: unemployment-style benefits for excluded (incl. undocumented) workers. YES = pro-immigrant.",
+    "found": true,
+    "bill_id": "ocd-bill/0b6f8f79-d773-42da-b4ef-a20bc3d29686",
+    "title": "Unemployment: Excluded Workers Program.",
+    "subjects": [
+      "Excluded Workers Program",
+      "Unemployment"
+    ],
+    "openstates_url": "https://openstates.org/ca/bills/20232024/SB227/",
+    "n_votes": 9,
+    "wiener_option": "yes",
+    "vote_motion": "3rd Reading SB227 Durazo et al.",
+    "vote_date": "2023-05-30T07:00:00+00:00",
+    "vote_result": "pass",
+    "vote_org": "upper",
+    "vote_counts": [
+      {
+        "option": "yes",
+        "value": 30
+      },
+      {
+        "option": "no",
+        "value": 7
+      },
+      {
+        "option": "other",
+        "value": 3
+      }
+    ],
+    "vote_sources": [
+      {
+        "url": "http://leginfo.legislature.ca.gov/faces/billVotesClient.xhtml?bill_id=202320240SB227",
+        "note": ""
+      }
+    ]
+  },
+  {
+    "issue": "civil_democracy",
+    "identifier": "SB 362",
+    "session": "20232024",
+    "direction": 1,
+    "note": "California Delete Act: one-stop data-broker deletion; consumer data-privacy / rein-in-data-brokers. YES = strong civil-liberties/tech reform.",
+    "found": true,
+    "bill_id": "ocd-bill/55e9a551-8665-4a79-904c-7b01c17f43d4",
+    "title": "Data broker registration: accessible deletion mechanism.",
+    "subjects": [
+      "Data broker registration",
+      "accessible deletion mechanism"
+    ],
+    "openstates_url": "https://openstates.org/ca/bills/20232024/SB362/",
+    "n_votes": 8,
+    "wiener_option": "yes",
+    "vote_motion": "3rd Reading SB362 Becker et al.",
+    "vote_date": "2023-05-31T07:00:00+00:00",
+    "vote_result": "pass",
+    "vote_org": "upper",
+    "vote_counts": [
+      {
+        "option": "yes",
+        "value": 32
+      },
+      {
+        "option": "no",
+        "value": 8
+      },
+      {
+        "option": "other",
+        "value": 0
+      }
+    ],
+    "vote_sources": [
+      {
+        "url": "http://leginfo.legislature.ca.gov/faces/billVotesClient.xhtml?bill_id=202320240SB362",
+        "note": ""
+      }
+    ]
+  }
+]

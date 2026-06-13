@@ -1,0 +1,66 @@
+{
+  "slug": "prop-a-earthquake-bond",
+  "code": "A",
+  "title": "Earthquake Safety and Emergency Response Bond",
+  "shortTitle": "Earthquake Safety Bond",
+  "subject": "General-obligation bond for earthquake, fire, and disaster preparedness.",
+  "plainSummary": "Proposition A authorizes a $535 million general-obligation bond to seismically retrofit and rebuild San Francisco's critical emergency-response and transit infrastructure. The money is allocated up to: $200M to replace the 110-year-old Potrero bus yard with a seismically safe Muni facility, $130M to expand the high-pressure Emergency Firefighting Water System (cisterns, pipes, tunnels), $100M to retrofit or replace neighborhood fire stations, $72M to retrofit or replace neighborhood police stations, and $33M for other public-safety facility repairs. As a general-obligation bond it requires a two-thirds (66.67%) supermajority to pass. The city pays it back through existing property taxes and pledges not to raise property-tax rates above San Francisco's charter-set limit (debt is issued as older bonds retire), so it is described as funding major infrastructure without a tax-rate increase. Total repayment is estimated at roughly $933 million over 25 years. SPUR endorsed YES, arguing the seismic resilience of first-responder infrastructure deserves continued public investment. A grassroots opposition (led by John Crabtree, 'No on A') argues it is a 'boondoggle' that wrongly diverts earthquake-safety dollars to a Muni bus yard and prefers extending the saltwater hydrant system; no financed opposition committee registered against the measure.",
+  "sourceUrls": [
+    "https://www.spur.org/voter-guide/2026-06/sf-prop-a-earthquake-bond",
+    "https://sfpublicworks.org/eser-2026",
+    "https://www.kalw.org/bay-area-news/2026-05-14/san-franciscos-proposition-a-explained",
+    "https://www.nbcbayarea.com/news/local/san-francisco-measure-a-quake-bond/4091606/"
+  ],
+  "yesPositions": [
+    {
+      "issue": "city_fiscal",
+      "yesDirection": 1,
+      "weight": 1.0,
+      "basis": "stated",
+      "rationale": "YES authorizes new city debt (a $535M general-obligation bond) to fund major public-safety infrastructure.",
+      "derivedFrom": [
+        "https://www.spur.org/voter-guide/2026-06/sf-prop-a-earthquake-bond",
+        "https://sfpublicworks.org/eser-2026"
+      ]
+    }
+  ],
+  "funding": {
+    "support": [
+      {
+        "committee": "Yes on A, San Franciscans for Fire, Earthquake, and Disaster Preparedness, sponsored by San Francisco Firefighters local 798",
+        "amount": 1633500,
+        "filerNid": "215726436",
+        "fppcId": "1486676",
+        "side": "support",
+        "topDonors": [
+          { "name": "California Alliance for Jobs - Rebuild California Committee", "amount": 178000 },
+          { "name": "Chakrabarti", "amount": 150000 },
+          { "name": "Members' Voice of the State Building and Construction Trades Council of California", "amount": 100000 },
+          { "name": "Operating Engineers Local Union No. 3 Issues Advocacy/Ballot", "amount": 100000 },
+          { "name": "Laborers Pacific Southwest Regional Organizing Coalition Issues PAC", "amount": 100000 },
+          { "name": "Huffman", "amount": 100000 },
+          { "name": "North Coast States Regional Council of Carpenters Issues PAC", "amount": 100000 },
+          { "name": "DoorDash, Inc.", "amount": 100000 },
+          { "name": "Webcor Construction LP", "amount": 75000 },
+          { "name": "Arcadis Inc", "amount": 62500 }
+        ],
+        "sourceUrl": "https://data.sfgov.org/resource/9ggq-m8hp.json?filer_nid=215726436"
+      }
+    ],
+    "oppose": [],
+    "sourceUrl": "https://data.sfgov.org/resource/9ggq-m8hp.json?filer_nid=215726436",
+    "asOf": "2026-05-27",
+    "dataLoadedAt": "2026-05-30",
+    "notes": "Support total = monetary contributions (FPPC Form 460 Line 1, cumulative) for the registered 'Yes on A' committee (filer_nid 215726436); cross-verified by summing the committee's 90 itemized Schedule A transactions, which equal $1,633,500 exactly. No financed opposition committee registered against the earthquake bond in DataSF (the only active 'No on A' committee, filer_nid 212872841, is 'No on A, Stop the Engardio Recall' — an unrelated measure on a different ballot). Opposition to Prop A was grassroots/unfinanced (label: oppose funding unavailable / $0 reported)."
+  },
+  "dataTier": 2,
+  "meta": {
+    "fundingSource": "SF Ethics via DataSF SODA — Filers 4c8t-ngau, Summary Totals 9ggq-m8hp, Transactions pitq-e56w",
+    "rawCache": [
+      "data/raw/sf-ethics-propA-filer-215726436.json",
+      "data/raw/sf-ethics-propA-summary-215726436.json",
+      "data/raw/sf-ethics-propA-transactions-215726436.json"
+    ],
+    "generatedAt": "2026-06-13"
+  }
+}

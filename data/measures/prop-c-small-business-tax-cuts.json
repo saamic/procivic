@@ -1,0 +1,74 @@
+{
+  "slug": "prop-c-small-business-tax-cuts",
+  "code": "C",
+  "title": "Small Business and Economic Recovery Act (Gross Receipts Tax Exemption)",
+  "shortTitle": "Small-Business Tax Cuts",
+  "subject": "Cuts taxes/fees on small businesses by raising the Gross Receipts Tax exemption threshold; a business-backed counter-measure to Prop D.",
+  "plainSummary": "Proposition C is an initiative — the \"Small Business and Economic Recovery Act\" — that raises San Francisco's small-business exemption from the Gross Receipts Tax (and the related Top Executive Pay Tax) from businesses earning $5 million or less in annual SF gross receipts up to those earning $7.5 million or less. The City Controller estimates roughly 800 additional businesses would become fully exempt, reducing city revenue by an estimated $30 million to $40 million per year. In exchange, Prop C moves a scheduled 2028 increase in the Top Executive Pay Tax rate up to 2027 and then freezes further increases. It was placed on the ballot by a signature-gathering campaign led by the San Francisco Chamber of Commerce and Advance SF, and was written as a direct counter to Prop D, the union-backed measure that would instead raise business taxes on companies with high executive-to-worker pay ratios. The two measures conflict: if both pass, the one with more votes prevails, and Prop C is drafted to nullify Prop D if Prop C wins more votes. The official ballot question read: \"Should San Francisco increase the tax exemption for certain businesses and also temporarily raise tax rates for larger companies?\" SPUR recommended NO, arguing the measure would worsen the city's budget (a roughly $169 million projected shortfall) and was primarily placed on the ballot to defeat Prop D; the moderate group GrowSF recommended YES, arguing it shields small businesses operating on thin margins. On June 2, 2026 both measures failed — Prop C lost with about 64% voting NO.",
+  "sourceUrls": [
+    "https://www.spur.org/voter-guide/2026-06/sf-prop-c-small-business-tax-cuts",
+    "https://ballotpedia.org/San_Francisco,_California,_Measure_C,_Gross_Receipts_Tax_Exemption_and_Top_Executive_Pay_Tax_Increase_Initiative_(June_2026)",
+    "https://www.kqed.org/voterguide/sanfrancisco/proposition-c",
+    "https://growsf.org/voter-guide/san-francisco-voter-guide-june-2026-election/measures/prop-c/",
+    "https://sfstandard.com/2026/06/02/san-francisco-overpaid-ceo-tax-explained-primary-election/"
+  ],
+  "yesPositions": [
+    {
+      "issue": "business_tax",
+      "yesDirection": -1,
+      "weight": 1.0,
+      "basis": "stated",
+      "rationale": "YES lowers business taxes — raising the Gross Receipts Tax small-business exemption from $5M to $7.5M — the lower-tax end of the axis. (Prop C also temporarily accelerates one Top Executive Pay Tax step to 2027, but its dominant, headline effect is a net business-tax cut of roughly $30-40M/yr.)",
+      "derivedFrom": [
+        "https://www.spur.org/voter-guide/2026-06/sf-prop-c-small-business-tax-cuts",
+        "https://www.kqed.org/voterguide/sanfrancisco/proposition-c"
+      ]
+    }
+  ],
+  "funding": {
+    "support": [
+      {
+        "committee": "Yes on C, No on D to Protect San Francisco's Small Businesses and Economic Recovery, sponsored by San Francisco Civic Organizations",
+        "amount": 6027850,
+        "filerNid": "215118470",
+        "fppcId": "1485633",
+        "side": "support",
+        "topDonors": [
+          { "name": "Neighbors for a Better San Francisco Advocacy", "amount": 850000 },
+          { "name": "Michael Moritz", "amount": 625000 },
+          { "name": "Sergey Brin (Google co-founder)", "amount": 500000 },
+          { "name": "Chris Larsen (Ripple executive chairman)", "amount": 500000 },
+          { "name": "SF Forward, sponsored by San Francisco Chamber of Commerce", "amount": 350000 },
+          { "name": "Williams-Sonoma, Inc.", "amount": 300000 },
+          { "name": "Visa, Inc.", "amount": 275000 },
+          { "name": "Google LLC and affiliated entities", "amount": 250000 },
+          { "name": "Tony Xu (DoorDash CEO)", "amount": 250000 },
+          { "name": "PG&E Corporation and affiliated entities", "amount": 250000 }
+        ],
+        "sourceUrl": "https://data.sfgov.org/resource/9ggq-m8hp.json?filer_nid=215118470"
+      }
+    ],
+    "oppose": [],
+    "sourceUrl": "https://data.sfgov.org/resource/9ggq-m8hp.json?filer_nid=215118470",
+    "asOf": "2026-05-27",
+    "dataLoadedAt": "2026-06-13",
+    "notes": "Support total = $6,027,850 monetary contributions (FPPC Form 460 Line 1, summed across the six non-overlapping filing periods for the registered Yes-on-C committee, filer_nid 215118470); this matches the sum of the committee's 63 itemized Schedule A monetary transactions ($6,027,850.00) exactly, and is independently corroborated by the SF Standard's reported '$6.6 million raised' for Prop C (citing Neighbors for a Better SF, Michael Moritz, Chris Larsen and Sergey Brin — all of which appear here). Including $572,159 in nonmonetary contributions (Form 460 Line 4 / Schedule C), total contributions reach $6,600,009 (Form 460 Line 5). CROSS-MEASURE NOTE (per NOTES.md): this committee is a 'Yes on C, No on D' committee — its money is attributed to the Prop C SUPPORT side here; the same committee's opposition spending is the No-on-D side on the Prop D profile. NO dedicated 'No on C' opposition committee registered for the June 2, 2026 ballot in DataSF — opposition to Prop C was organized chiefly through the union-backed Yes-on-D campaign (filer_nid 214966146, 'Yes on D - Stand Up for SF'), but because that committee's registered name declares only a Yes-on-D position (not 'No on C'), it is not attributed to the Prop C oppose side under the name-matching rule. Prop C oppose funding via a dedicated committee: none reported (label: opposition funding unavailable / $0 reported)."
+  },
+  "result": {
+    "outcome": "failed",
+    "noPercentApprox": 64,
+    "sourceUrl": "https://sfstandard.com/2026/06/02/san-francisco-overpaid-ceo-tax-explained-primary-election/"
+  },
+  "dataTier": 2,
+  "meta": {
+    "fundingSource": "SF Ethics via DataSF SODA — Filers 4c8t-ngau, Summary Totals 9ggq-m8hp, Transactions pitq-e56w",
+    "committeeMatch": "Matched by NAME via committeeNameHints in config/measures.ts ('Yes on C', \"Protect San Francisco's Small Businesses\"); confirmed as the June 2, 2026 committee because it is the only Yes-on-C filer with transactions running through the 2026-06-02 election date (first txn 2025-12-22, last 2026-06-02). Other 'Yes on C' filers in DataSF are from prior election cycles.",
+    "rawCache": [
+      "data/raw/datasf_propc_filer_215118470.json",
+      "data/raw/datasf_propc_summary_215118470.json",
+      "data/raw/datasf_propc_transactions_215118470.json",
+      "data/raw/datasf_propc_committee_namesearch.json"
+    ],
+    "generatedAt": "2026-06-13"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "source": "OpenFEC schedule_a, committee C00909283, 2026 cycle, itemized individuals",
+  "sourceUrl": "https://api.open.fec.gov/v1/schedules/schedule_a/?committee_id=C00909283&two_year_transaction_period=2026&is_individual=true",
+  "fetchedRows": 3198,
+  "expectedRows": 3198,
+  "pages": 32,
+  "itemizedIndividualTotal": 3369200.97,
+  "uniqueDonors": 1691,
+  "topDonors": [
+    {
+      "name": "ACTBLUE",
+      "amount": 27735.02,
+      "txns": 427
+    },
+    {
+      "name": "CERON URIBE, JUAN FELIPE",
+      "amount": 14000,
+      "employer": "OPENAI",
+      "txns": 3
+    },
+    {
+      "name": "FILAN, DANIEL",
+      "amount": 14000,
+      "employer": "MATS RESEARCH, INC",
+      "txns": 3
+    },
+    {
+      "name": "ABELE, EMMA",
+      "amount": 14000,
+      "employer": "PROTECTIVE EQUIPMENT INC.",
+      "txns": 3
+    },
+    {
+      "name": "YOU, JOSHUA",
+      "amount": 12500,
+      "employer": "EPOCH AI",
+      "txns": 5
+    },
+    {
+      "name": "WONG, CAROL",
+      "amount": 10700,
+      "employer": "CAROL WONG",
+      "txns": 4
+    },
+    {
+      "name": "COHEN, MICHAEL",
+      "amount": 10325,
+      "employer": "UC BERKELEY",
+      "txns": 4
+    },
+    {
+      "name": "MASON, ANDREW",
+      "amount": 10300,
+      "employer": "N/A",
+      "txns": 3
+    },
+    {
+      "name": "KAHN, MATTHEW",
+      "amount": 10300,
+      "employer": "GIBSON, DUNN & CRUTCHER LLP",
+      "txns": 3
+    },
+    {
+      "name": "SEIBEL, MICHAEL",
+      "amount": 10300,
+      "employer": "Y COMBINATOR",
+      "txns": 4
+    },
+    {
+      "name": "MACINNIS, CHARLES",
+      "amount": 10300,
+      "employer": "PEOPLE CENTER, INC.",
+      "txns": 3
+    },
+    {
+      "name": "RUSENKO, DAVID",
+      "amount": 10300,
+      "employer": "LEAP FORWARD VENTURES",
+      "txns": 3
+    },
+    {
+      "name": "NORRIS, TRENTON",
+      "amount": 10300,
+      "employer": "HOGAN LOVELLS US LLP",
+      "txns": 5
+    },
+    {
+      "name": "MUEHLHAUSER, LUKE",
+      "amount": 10300,
+      "employer": "OPEN PHILANTHROPY",
+      "txns": 3
+    },
+    {
+      "name": "LARSEN, CHRIS",
+      "amount": 10300,
+      "employer": "RIPPLE, INC.",
+      "txns": 4
+    }
+  ]
+}

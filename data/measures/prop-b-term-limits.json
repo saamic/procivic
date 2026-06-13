@@ -1,0 +1,100 @@
+{
+  "slug": "prop-b-term-limits",
+  "code": "B",
+  "title": "Proposition B — Lifetime Term Limits for Mayor and Board of Supervisors",
+  "shortTitle": "Lifetime Term Limits",
+  "subject": "Charter amendment imposing lifetime term limits on San Francisco's Mayor and Board of Supervisors.",
+  "dataTier": 2,
+  "plainSummary": "Proposition B is a charter amendment that would impose LIFETIME term limits on San Francisco's Mayor and members of the Board of Supervisors, capping each at two four-year terms over an entire lifetime. Under current law (set by 1990's Prop N), supervisors and the mayor can serve two consecutive four-year terms, sit out one term, and then run for the same office again — the so-called \"boomerang\" provision. Prop B eliminates that: once you serve two terms in an office, you could never run for it again. The limit applies only to the Mayor and Board of Supervisors, not to other citywide offices like district attorney, city attorney, treasurer, sheriff, public defender, or assessor-recorder. The Board of Supervisors voted 7–4 to place it on the ballot; it was sponsored by Supervisors Bilal Mahmood, Myrna Melgar, Stephen Sherrill, Matt Dorsey, Danny Sauter, and Alan Wong. A YES vote enacts stricter lifetime term limits (a structural accountability/turnover reform); a NO vote keeps the current consecutive-term limits, preserving voters' ability to re-elect experienced leaders after a break. SPUR recommended NO, arguing existing limits already balance turnover with voter choice. The measure passed on June 2, 2026, 53.0% to 47.0%, making San Francisco the first California city to adopt lifetime term limits.",
+  "sourceUrls": [
+    "https://www.spur.org/voter-guide/2026-06/sf-prop-b-lifetime-term-limits",
+    "https://en.wikipedia.org/wiki/2026_San_Francisco_Proposition_B",
+    "https://media.api.sf.gov/documents/20260212_CharterAmendment_Term_Limits.pdf",
+    "https://www.kqed.org/voterguide/sanfrancisco/proposition-b"
+  ],
+  "yesPosition": [
+    {
+      "issue": "govt_reform",
+      "value": 1,
+      "basis": "stated",
+      "derivedFrom": ["config/measures.ts:prop-b-term-limits:govt_reform"],
+      "yesDirection": 1,
+      "weight": 1.0,
+      "rationale": "YES adds stricter term limits — a structural accountability reform."
+    }
+  ],
+  "funding": {
+    "support": [
+      {
+        "committee": "Term Limits Now - Yes on B!",
+        "amount": 377750,
+        "filerNid": "215271192",
+        "fppcId": "1485878",
+        "status": "ACTIVE",
+        "basis": "Form 460 Schedule A monetary contributions, cumulative (line 3 col B), through filing period ending 2026-05-27; matches itemized Schedule A sum of $377,750 exactly. Total receipts incl. $5,000 non-monetary = $382,750.",
+        "topDonors": [
+          { "name": "LARSEN", "amount": 200000, "city": "San Francisco" },
+          { "name": "MORITZ", "amount": 50000, "city": "San Francisco" },
+          { "name": "SF BELIEVES", "amount": 20000, "city": "Sacramento" },
+          { "name": "GUILLEN", "amount": 20000, "city": "Portola Valley" },
+          { "name": "ROBINSON", "amount": 10000, "city": "San Francisco" },
+          { "name": "THE PRADO GROUP, INC.", "amount": 10000, "city": "San Francisco" },
+          { "name": "SAN FRANCISCO APARTMENT ASSOCIATION POLITICAL ACTION COMMITTEE", "amount": 10000, "city": "San Francisco" },
+          { "name": "CULVER", "amount": 10000, "city": "San Francisco" },
+          { "name": "JOSEFOWITZ", "amount": 10000, "city": "San Francisco" },
+          { "name": "WILSEY", "amount": 5000, "city": "San Francisco" },
+          { "name": "POSCH", "amount": 5000, "city": "Santa Monica" },
+          { "name": "SISSON", "amount": 5000, "city": "San Francisco" },
+          { "name": "FLYNN", "amount": 5000, "city": "San Francisco" },
+          { "name": "ERICKSON", "amount": 5000, "city": "San Francisco" },
+          { "name": "SKATES", "amount": 5000, "city": "San Francisco" },
+          { "name": "DODSON", "amount": 5000, "city": "San Francisco" },
+          { "name": "JERSIN", "amount": 1500, "city": "San Francisco" },
+          { "name": "PLANK", "amount": 1000, "city": "Baltimore" },
+          { "name": "MCCARTY", "amount": 250, "city": "San Francisco" }
+        ]
+      }
+    ],
+    "oppose": [
+      {
+        "committee": "No Lifetime Ban",
+        "amount": 20350,
+        "filerNid": "215900904",
+        "fppcId": "1488891",
+        "status": "ACTIVE",
+        "basis": "Form 460 monetary contributions, cumulative (line 1 col B), through filing period ending 2026-05-27; itemized Schedule A = $20,250 plus $100 unitemized. Total receipts incl. $18,500 non-monetary = $38,850. Committee branded 'No Lifetime Ban' (nolifetimeban.com) — matched as the Prop B opposition by campaign name, not a literal 'No on B' string.",
+        "topDonors": [
+          { "name": "San Francisco Labor and Neighbor Education", "amount": 10000, "city": "San Francisco" },
+          { "name": "Propel: Progress for People", "amount": 5000, "city": "San Francisco" },
+          { "name": "Marks", "amount": 2500, "city": "San Francisco" },
+          { "name": "Northern California District Council International Longshore Warehouse Union", "amount": 750, "city": "San Francisco" },
+          { "name": "Chignell", "amount": 500, "city": "San Francisco" },
+          { "name": "Knox", "amount": 500, "city": "San Francisco" },
+          { "name": "Kopp", "amount": 250, "city": "Los Angeles" },
+          { "name": "Harvill", "amount": 250, "city": "San Francisco" },
+          { "name": "Agnos", "amount": 250, "city": "San Francisco" },
+          { "name": "Solomon", "amount": 250, "city": "San Francisco" }
+        ]
+      }
+    ],
+    "totals": {
+      "support": 377750,
+      "oppose": 20350,
+      "ratioSupportToOppose": 18.6
+    },
+    "sourceUrl": "https://data.sfgov.org/resource/9ggq-m8hp.json?filer_nid=215271192",
+    "sourceUrls": [
+      "https://data.sfgov.org/resource/4c8t-ngau.json?$where=upper(filer_name)%20like%20%27%25TERM%20LIMIT%25%27%20OR%20upper(filer_name)%20like%20%27%25LIFETIME%25%27",
+      "https://data.sfgov.org/resource/9ggq-m8hp.json?filer_nid=215271192",
+      "https://data.sfgov.org/resource/9ggq-m8hp.json?filer_nid=215900904",
+      "https://data.sfgov.org/resource/pitq-e56w.json?filer_nid=215271192",
+      "https://data.sfgov.org/resource/pitq-e56w.json?filer_nid=215900904"
+    ],
+    "note": "Funding figures are monetary contributions per committee, reconciled to each committee's Form 460 summary totals. Source: SF Ethics Commission via DataSF SODA (Filers 4c8t-ngau, Summary 9ggq-m8hp, Transactions pitq-e56w). Data as of filings through 2026-05-27 (loaded 2026-06-13)."
+  },
+  "generatedAt": "2026-06-13",
+  "sources": {
+    "funding": "SF Ethics Commission via DataSF SODA",
+    "summary": "SPUR Voter Guide, Wikipedia, SF.gov official charter amendment text, KQED"
+  }
+}

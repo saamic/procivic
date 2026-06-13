@@ -1,0 +1,106 @@
+{
+  "slug": "prop-d-business-tax",
+  "code": "D",
+  "title": "Proposition D — Increases to Business Tax Based on Comparison of Top Executive's Pay to Employees' Pay (the \"Overpaid CEO Tax\")",
+  "shortTitle": "Business / \"Overpaid CEO\" Tax",
+  "subject": "Raises San Francisco's top-executive-pay tax on large businesses whose highest-paid managerial employee earns more than 100x the company's median employee.",
+  "election": "June 2, 2026 SF Consolidated Statewide Direct Primary",
+  "plainSummary": "Proposition D — the \"Overpaid CEO Tax\" — would sharply raise San Francisco's existing Top Executive Pay Tax, the surcharge the city already levies on large businesses whose highest-paid executive earns more than 100 times the company's median employee. A YES vote raises those surcharge rates (SPUR describes the increase as roughly 800–900% of current rates beginning in 2027; GrowSF puts it around 800%) and changes how the pay ratio is measured — from comparing the top executive's pay to the median San Francisco employee to the company's GLOBAL median employee, which lowers the effective threshold and sweeps in more firms, including large retailers, pharmacies, and grocery chains. It applies to companies with about $1 billion or more in San Francisco gross receipts and more than 1,000 employees worldwide, and it adds a requirement that any future change to these tax rates go back to the voters. The City Controller estimated the measure would raise roughly $250–300 million per year for the General Fund starting in 2027, while warning of a \"potential risk of business relocation.\" A NO vote keeps the current Top Executive Pay Tax unchanged. Supporters (labor — SEIU 1021, SEIU 2015, and IFPTE Local 21 led the signature drive) framed it as making the largest, most profitable companies — including AI firms — help backfill federal cuts to social services. Opponents (the SF Chamber of Commerce, major tech and retail employers, and civic groups, plus Mayor Daniel Lurie) argued it would push investment and jobs out of the city. San Francisco voters DEFEATED Proposition D, roughly 52.8% NO to 47.2% YES (132,817 to 118,633).",
+  "sourceUrls": [
+    "https://www.spur.org/voter-guide/2026-06/sf-prop-d-business-tax-increase",
+    "https://growsf.org/voter-guide/san-francisco-voter-guide-june-2026-election/measures/prop-d/",
+    "https://en.wikipedia.org/wiki/2026_San_Francisco_Proposition_D",
+    "https://sfstandard.com/2026/06/01/prop-d-overpaid-ceo-eat-the-rich/",
+    "https://abc7news.com/post/san-francisco-prop-new-report-intensifies-debate-ceo-tax-measure/19000893/"
+  ],
+  "yesPositions": [
+    {
+      "issue": "business_tax",
+      "yesDirection": 1,
+      "weight": 0.7,
+      "rationale": "YES raises taxes on large business — the higher-tax end of the axis."
+    },
+    {
+      "issue": "inequality_labor",
+      "yesDirection": 1,
+      "weight": 1.0,
+      "rationale": "YES targets CEO-to-worker pay inequality directly."
+    }
+  ],
+  "funding": {
+    "support": [
+      {
+        "committee": "Yes on D - Stand Up for SF sponsored by labor organizations",
+        "amount": 2990487.03
+      }
+    ],
+    "oppose": [
+      {
+        "committee": "YES ON C, NO ON D TO PROTECT SAN FRANCISCO'S SMALL BUSINESSES AND ECONOMIC RECOVERY, SPONSORED BY SAN FRANCISCO CIVIC ORGANIZATIONS",
+        "amount": 6075009.05
+      }
+    ],
+    "sourceUrl": "https://data.sfgov.org/resource/9ggq-m8hp.json?$where=filer_nid%20in%20('215118470','214966146')%20AND%20form_type='FPPC460'&$order=end_date%20DESC",
+    "asOf": "2026-05-27",
+    "metric": "Total contributions received, calendar-year-to-date (FPPC Form 460, line 5 col B), final pre-election filing (period ending 2026-05-27).",
+    "committees": [
+      {
+        "filerNid": "214966146",
+        "fppcId": "1484969",
+        "name": "Yes on D - Stand Up for SF sponsored by labor organizations",
+        "side": "support",
+        "monetaryContributionsYtd": 2885128.00,
+        "totalContributionsYtd": 2990487.03,
+        "topDonors": [
+          { "donor": "Service Employees International Union Local 1021 Issues PAC", "kind": "pac", "amount": 600000 },
+          { "donor": "Chakrabarti (Saikat Chakrabarti, CA-11 candidate, San Francisco)", "kind": "donor", "amount": 600000 },
+          { "donor": "California Workers' Justice Coalition (sponsored by SEIU Local 1021)", "kind": "pac", "amount": 400000 },
+          { "donor": "Dignity CA SEIU Local 2015", "kind": "pac", "amount": 400000 },
+          { "donor": "IFPTE Local 21 — TJ Anthony PAC Fund", "kind": "pac", "amount": 385000 },
+          { "donor": "SEIU Local 2015 Issues PAC", "kind": "pac", "amount": 350000 },
+          { "donor": "IFPTE Local 21 Issues PAC", "kind": "pac", "amount": 120000 },
+          { "donor": "SEIU California State Council for Working People", "kind": "pac", "amount": 100000 }
+        ]
+      },
+      {
+        "filerNid": "215118470",
+        "fppcId": "1485633",
+        "name": "YES ON C, NO ON D TO PROTECT SAN FRANCISCO'S SMALL BUSINESSES AND ECONOMIC RECOVERY, SPONSORED BY SAN FRANCISCO CIVIC ORGANIZATIONS",
+        "side": "oppose",
+        "monetaryContributionsYtd": 5502850.01,
+        "totalContributionsYtd": 6075009.05,
+        "note": "Joint committee: supports Prop C AND opposes Prop D. Per NOTES.md committee-name attribution, its money is the primary organized opposition to Prop D and is attributed to the OPPOSE side here.",
+        "topDonors": [
+          { "donor": "Neighbors for a Better San Francisco Advocacy", "kind": "committee", "amount": 850000 },
+          { "donor": "Moritz (Michael Moritz, venture capitalist)", "kind": "donor", "amount": 625000 },
+          { "donor": "Brin (Sergey Brin, Google co-founder; Reno NV)", "kind": "donor", "amount": 500000 },
+          { "donor": "Larsen (Chris Larsen, Ripple co-founder; San Francisco)", "kind": "donor", "amount": 500000 },
+          { "donor": "SF Forward (sponsored by San Francisco Chamber of Commerce)", "kind": "committee", "amount": 350000 },
+          { "donor": "Williams-Sonoma, Inc.", "kind": "industry", "amount": 300000 },
+          { "donor": "Visa, Inc.", "kind": "industry", "amount": 275000 },
+          { "donor": "Google LLC and affiliated entities", "kind": "industry", "amount": 250000 },
+          { "donor": "PG&E Corporation and affiliated entities", "kind": "industry", "amount": 250000 },
+          { "donor": "Amazon.com Services LLC", "kind": "industry", "amount": 200000 },
+          { "donor": "Emerson Collective, LLC", "kind": "industry", "amount": 200000 },
+          { "donor": "Meta Platforms, Inc.", "kind": "industry", "amount": 200000 }
+        ],
+        "topDonorsSourceUrl": "https://data.sfgov.org/resource/pitq-e56w.json?$where=filer_nid='215118470'%20AND%20record_type='RCPT'%20AND%20form_type='A'&$select=transaction_last_name,sum(transaction_amount_1)%20as%20amt&$group=transaction_last_name&$order=amt%20DESC"
+      }
+    ]
+  },
+  "result": {
+    "outcome": "FAILED",
+    "yesPct": 47.18,
+    "noPct": 52.82,
+    "yesVotes": 118633,
+    "noVotes": 132817,
+    "totalValidVotes": 251450,
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_San_Francisco_Proposition_D"
+  },
+  "dataTier": 2,
+  "generatedAt": "2026-06-13",
+  "sources": {
+    "summary": ["SPUR voter guide", "GrowSF voter guide", "Wikipedia 2026 SF Prop D", "SF Standard", "ABC7"],
+    "funding": "SF Ethics via DataSF SODA — Filers 4c8t-ngau, Summary 9ggq-m8hp, Transactions pitq-e56w (committees matched to Prop D by name per measures.ts committeeNameHints / NOTES.md)"
+  }
+}

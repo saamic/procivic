@@ -1,0 +1,311 @@
+{
+  "slug": "scott-wiener",
+  "name": "Scott Wiener",
+  "identity": {
+    "party": "Democratic",
+    "office": "U.S. House, CA-11 (open seat — Pelosi)",
+    "currentRole": "California State Senator, District 11",
+    "openStatesPersonId": "ocd-person/de84277e-1c23-4036-bd64-b27c310a1c0e",
+    "fecCandidateId": "H8CA11116",
+    "principalCommitteeId": "C00909283",
+    "incumbent": false,
+    "sourceUrls": [
+      "https://v3.openstates.org/people?jurisdiction=California&name=Scott%20Wiener",
+      "https://www.fec.gov/data/candidate/H8CA11116/"
+    ]
+  },
+  "dataTier": 1,
+  "stances": [
+    {
+      "issue": "housing",
+      "value": 1.0,
+      "basis": "votes",
+      "derivedFrom": [
+        "SB 423"
+      ]
+    },
+    {
+      "issue": "homelessness_safety",
+      "value": 1.0,
+      "basis": "votes",
+      "derivedFrom": [
+        "SB 43"
+      ]
+    },
+    {
+      "issue": "business_tax",
+      "value": 1.0,
+      "basis": "votes",
+      "derivedFrom": [
+        "SB 584"
+      ]
+    },
+    {
+      "issue": "inequality_labor",
+      "value": 1.0,
+      "basis": "votes",
+      "derivedFrom": [
+        "SB 799"
+      ]
+    },
+    {
+      "issue": "city_fiscal",
+      "value": 1.0,
+      "basis": "votes",
+      "derivedFrom": [
+        "SB 867"
+      ]
+    },
+    {
+      "issue": "govt_reform",
+      "value": 1.0,
+      "basis": "votes",
+      "derivedFrom": [
+        "SB 411"
+      ]
+    },
+    {
+      "issue": "climate",
+      "value": 1.0,
+      "basis": "votes",
+      "derivedFrom": [
+        "SB 253"
+      ]
+    },
+    {
+      "issue": "healthcare",
+      "value": 1.0,
+      "basis": "votes",
+      "derivedFrom": [
+        "SB 770"
+      ]
+    },
+    {
+      "issue": "immigration",
+      "value": 1.0,
+      "basis": "votes",
+      "derivedFrom": [
+        "SB 227"
+      ]
+    },
+    {
+      "issue": "civil_democracy",
+      "value": 1.0,
+      "basis": "votes",
+      "derivedFrom": [
+        "SB 362"
+      ]
+    }
+  ],
+  "votes": [
+    {
+      "issue": "housing",
+      "billId": "SB 423",
+      "title": "Land use: streamlined housing approvals: multifamily housing developments.",
+      "position": "Yea",
+      "direction": 1,
+      "sourceUrl": "https://openstates.org/ca/bills/20232024/SB423/"
+    },
+    {
+      "issue": "homelessness_safety",
+      "billId": "SB 43",
+      "title": "Behavioral health.",
+      "position": "Yea",
+      "direction": 1,
+      "sourceUrl": "https://openstates.org/ca/bills/20232024/SB43/"
+    },
+    {
+      "issue": "business_tax",
+      "billId": "SB 584",
+      "title": "Laborforce housing: Short-Term Rental Tax Law.",
+      "position": "Yea",
+      "direction": 1,
+      "sourceUrl": "https://openstates.org/ca/bills/20232024/SB584/"
+    },
+    {
+      "issue": "inequality_labor",
+      "billId": "SB 799",
+      "title": "Unemployment insurance: trade disputes: eligibility for benefits.",
+      "position": "Yea",
+      "direction": 1,
+      "sourceUrl": "https://openstates.org/ca/bills/20232024/SB799/"
+    },
+    {
+      "issue": "city_fiscal",
+      "billId": "SB 867",
+      "title": "Safe Drinking Water, Wildfire Prevention, Drought Preparedness, and Clean Air Bond Act of 2024.",
+      "position": "Yea",
+      "direction": 1,
+      "sourceUrl": "https://openstates.org/ca/bills/20232024/SB867/"
+    },
+    {
+      "issue": "govt_reform",
+      "billId": "SB 411",
+      "title": "Open meetings: teleconferences: neighborhood councils.",
+      "position": "Yea",
+      "direction": 1,
+      "sourceUrl": "https://openstates.org/ca/bills/20232024/SB411/"
+    },
+    {
+      "issue": "climate",
+      "billId": "SB 253",
+      "title": "Climate Corporate Data Accountability Act.",
+      "position": "Yea",
+      "direction": 1,
+      "sourceUrl": "https://openstates.org/ca/bills/20232024/SB253/"
+    },
+    {
+      "issue": "healthcare",
+      "billId": "SB 770",
+      "title": "Health care: unified health care financing.",
+      "position": "Yea",
+      "direction": 1,
+      "sourceUrl": "https://openstates.org/ca/bills/20232024/SB770/"
+    },
+    {
+      "issue": "immigration",
+      "billId": "SB 227",
+      "title": "Unemployment: Excluded Workers Program.",
+      "position": "Yea",
+      "direction": 1,
+      "sourceUrl": "https://openstates.org/ca/bills/20232024/SB227/"
+    },
+    {
+      "issue": "civil_democracy",
+      "billId": "SB 362",
+      "title": "Data broker registration: accessible deletion mechanism.",
+      "position": "Yea",
+      "direction": 1,
+      "sourceUrl": "https://openstates.org/ca/bills/20232024/SB362/"
+    }
+  ],
+  "funding": {
+    "total": 3958852.97,
+    "itemizedIndividualTotal": 3369200.97,
+    "itemizedIndividualTxns": 3198,
+    "topDonors": [
+      {
+        "name": "ActBlue (grassroots conduit)",
+        "amount": 27735.02,
+        "employer": "Earmarked small-dollar donations (427 contributions)",
+        "kind": "committee"
+      },
+      {
+        "name": "CERON URIBE, JUAN FELIPE",
+        "amount": 14000.0,
+        "employer": "OPENAI",
+        "kind": "donor"
+      },
+      {
+        "name": "FILAN, DANIEL",
+        "amount": 14000.0,
+        "employer": "MATS RESEARCH, INC",
+        "kind": "donor"
+      },
+      {
+        "name": "ABELE, EMMA",
+        "amount": 14000.0,
+        "employer": "PROTECTIVE EQUIPMENT INC.",
+        "kind": "donor"
+      },
+      {
+        "name": "YOU, JOSHUA",
+        "amount": 12500.0,
+        "employer": "EPOCH AI",
+        "kind": "donor"
+      },
+      {
+        "name": "WONG, CAROL",
+        "amount": 10700.0,
+        "employer": "CAROL WONG",
+        "kind": "donor"
+      },
+      {
+        "name": "COHEN, MICHAEL",
+        "amount": 10325.0,
+        "employer": "UC BERKELEY",
+        "kind": "donor"
+      },
+      {
+        "name": "MASON, ANDREW",
+        "amount": 10300.0,
+        "employer": "N/A",
+        "kind": "donor"
+      },
+      {
+        "name": "KAHN, MATTHEW",
+        "amount": 10300.0,
+        "employer": "GIBSON, DUNN & CRUTCHER LLP",
+        "kind": "donor"
+      },
+      {
+        "name": "SEIBEL, MICHAEL",
+        "amount": 10300.0,
+        "employer": "Y COMBINATOR",
+        "kind": "donor"
+      },
+      {
+        "name": "MACINNIS, CHARLES",
+        "amount": 10300.0,
+        "employer": "PEOPLE CENTER, INC.",
+        "kind": "donor"
+      },
+      {
+        "name": "RUSENKO, DAVID",
+        "amount": 10300.0,
+        "employer": "LEAP FORWARD VENTURES",
+        "kind": "donor"
+      },
+      {
+        "name": "NORRIS, TRENTON",
+        "amount": 10300.0,
+        "employer": "HOGAN LOVELLS US LLP",
+        "kind": "donor"
+      },
+      {
+        "name": "MUEHLHAUSER, LUKE",
+        "amount": 10300.0,
+        "employer": "OPEN PHILANTHROPY",
+        "kind": "donor"
+      },
+      {
+        "name": "LARSEN, CHRIS",
+        "amount": 10300.0,
+        "employer": "RIPPLE, INC.",
+        "kind": "donor"
+      }
+    ],
+    "sourceUrl": "https://www.fec.gov/data/candidate/H8CA11116/?cycle=2026"
+  },
+  "statements": [
+    {
+      "issue": "housing",
+      "sourceUrl": "https://www.scottwiener.com/priorities",
+      "text": "Scott is a nationally renowned leader on housing, authoring California's most consequential streamlining laws resulting in the construction of tens of thousands of homes — including 3,000+ below market rate, affordable homes in San Francisco."
+    },
+    {
+      "issue": "healthcare",
+      "sourceUrl": "https://www.scottwiener.com/priorities",
+      "text": "We need Medicare for All. And until we get there, Scott will tackle healthcare affordability in Congress just like he has in the Legislature: by capping insulin at $35/month, forcing insurance companies to cover mental healthcare, reducing prior authorizations, lowering prescription drug prices, and working to reverse Trump's cuts to Medicaid and the Affordable Care Act."
+    },
+    {
+      "issue": "climate",
+      "sourceUrl": "https://www.scottwiener.com/priorities",
+      "text": "Named a TIME100 Climate Champion, Scott passed a first-in-the-nation law requiring large corporations to disclose their carbon emissions."
+    },
+    {
+      "issue": "immigration",
+      "sourceUrl": "https://www.scottwiener.com/priorities",
+      "text": "When masked agents began disappearing people off the streets, Scott passed first-in-the-nation legislation to make it illegal for ICE to wear masks, and he is now working to end impunity for ICE by allowing you to sue them when they violate your rights — it's currently nearly impossible to sue them under federal law."
+    }
+  ],
+  "meta": {
+    "generatedAt": "2026-06-13",
+    "sources": {
+      "votes": "OpenStates v3 (CA Senate roll calls; one representative bill per issue)",
+      "funding": "OpenFEC schedules/schedule_a (itemized INDIVIDUAL contributions), 2026 cycle, committee C00909283",
+      "statements": "scottwiener.com official campaign site (/priorities)"
+    },
+    "notes": "Stance per issue = mean(direction * (votedYea?+1:-1)) over the issue's key vote(s); all 10 are CA Senate (upper) passage votes Wiener voted Yea on, so each stance = +1.0. Funding totals = 2026-cycle receipts; topDonors aggregate itemized individual line items (deduped by sub_id) across employer/occupation (NOTES.md FEC quirk)."
+  }
+}
