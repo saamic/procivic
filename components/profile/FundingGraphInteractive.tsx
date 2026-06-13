@@ -362,7 +362,6 @@ export function FundingGraphInteractive({
               return (
                 <g
                   key={n.id}
-                  transform={`translate(${n.x} ${n.y})`}
                   tabIndex={isCandidate ? -1 : 0}
                   role={isCandidate ? "img" : "button"}
                   aria-label={
