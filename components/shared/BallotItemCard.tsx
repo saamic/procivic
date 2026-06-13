@@ -80,6 +80,7 @@ export function BallotItemCard({
                   alignment={recommendation.alignment}
                   confidence={recommendation.confidence}
                   size="sm"
+                  showConfidence={false}
                 />
               ) : (
                 <Badge variant="muted">Take the quiz to decode</Badge>

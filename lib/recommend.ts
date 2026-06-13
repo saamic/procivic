@@ -11,16 +11,9 @@
 import type { BallotCandidateRace, BallotCandidate } from "@/lib/ballot";
 import { getCandidate } from "@/lib/candidates";
 import { MEASURES } from "@/config/measures";
-import {
-  computeAlignment,
-  computeConfidence,
-  measureLean,
-} from "@/lib/scoring";
+import { computeAlignment, computeConfidence } from "@/lib/scoring";
 import { issueLabel } from "@/components/shared/IssueBadge";
 import type { Stance, UserValues, AlignmentResult } from "@/lib/types";
-
-/** Below this lean strength (distance from the 50 midpoint) we hedge: "Lean YES" / "Lean NO". */
-const LEAN_HEDGE_STRENGTH = 20;
 
 /** A decoded verdict for one ballot item — always derived, never editorial. */
 export interface Recommendation {
@@ -76,10 +69,12 @@ export function measureStances(measureSlug: string): Stance[] {
 }
 
 /**
- * Recommend YES/NO on a measure for this user. We score the alignment of the YES position,
- * then `measureLean` decides direction; strength < LEAN_HEDGE_STRENGTH hedges to "Lean …".
- * Confidence is the honest coverage/evidence/decisiveness blend from the engine. The `why`
- * names the user's most-weighted contributing issue — descriptive, not editorial.
+ * Recommend YES/NO/Toss-up on a measure for this user. We score the alignment of the YES
+ * position, then key the verdict to the DISPLAYED (rounded) alignment % so the label matches
+ * exactly what the user sees: rounded > 50 -> "YES", rounded < 50 -> "NO", rounded === 50 ->
+ * "Toss-up" (the user's values don't lean the measure either way). Confidence is the honest
+ * coverage/evidence/decisiveness blend from the engine. The `why` names the user's most-weighted
+ * contributing issue — descriptive, not editorial.
  * Returns null when the user has no value vector (nothing to score against).
  */
 export function recommendMeasure(
@@ -91,16 +86,30 @@ export function recommendMeasure(
   const stances = measureStances(measureSlug);
   const alignmentResult = computeAlignment(user, stances);
   const { alignment } = alignmentResult;
-  const { lean, strength } = measureLean(alignment);
   const confidence = computeConfidence(user, stances, alignment).value;
 
-  const hedged = strength < LEAN_HEDGE_STRENGTH;
-  const label = hedged ? `Lean ${lean}` : lean;
-
+  // Key the verdict to the DISPLAYED (rounded) alignment so the label matches what the user
+  // sees: exactly-50 (rounded) is a genuine "Toss-up", not a YES.
+  const displayed = Math.round(alignment);
   const topIssue = topContributingIssueLabel(alignmentResult);
-  const why = topIssue
-    ? `Matches your priority on ${topIssue.toLowerCase()}.`
-    : "Scored against your values — you didn’t weight this measure’s issues, so this is a coin-flip.";
+
+  let label: string;
+  let why: string;
+  if (displayed > 50) {
+    label = "YES";
+    why = topIssue
+      ? `Matches your priority on ${topIssue.toLowerCase()}.`
+      : "Matches your stated values on this measure’s issues.";
+  } else if (displayed < 50) {
+    label = "NO";
+    why = topIssue
+      ? `Conflicts with your priority on ${topIssue.toLowerCase()}.`
+      : "Conflicts with your stated values on this measure’s issues.";
+  } else {
+    label = "Toss-up";
+    why =
+      "Your values don’t lean this measure either way — it’s a coin-flip for you.";
+  }
 
   return { label, alignment, confidence, why };
 }

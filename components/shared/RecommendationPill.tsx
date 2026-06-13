@@ -13,12 +13,14 @@ export function RecommendationPill({
   alignment,
   confidence,
   size = "md",
+  showConfidence = true,
   className,
 }: {
   recommendation: string;
   alignment: number;
   confidence: number;
   size?: "sm" | "md";
+  showConfidence?: boolean;
   className?: string;
 }) {
   return (
@@ -38,7 +40,7 @@ export function RecommendationPill({
         {recommendation}
       </span>
       <ScoreChip value={alignment} label="aligned" size="sm" />
-      <ConfidenceBadge value={confidence} size="sm" />
+      {showConfidence && <ConfidenceBadge value={confidence} size="sm" />}
     </div>
   );
 }
