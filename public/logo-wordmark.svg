@@ -12,18 +12,27 @@
     </linearGradient>
   </defs>
 
-  <!-- Mark (scaled copy of logo-mark) -->
+  <!-- Mark (scaled copy of logo-mark ballot box) -->
   <g transform="translate(8 4) scale(0.46875)">
     <rect x="16" y="16" width="224" height="224" rx="52" ry="52" fill="url(#pcGradW)"/>
-    <g fill="#ffffff" opacity="0.28">
-      <rect x="74"  y="150" width="22" height="40" rx="8"/>
-      <rect x="117" y="126" width="22" height="64" rx="8"/>
-      <rect x="160" y="98"  width="22" height="92" rx="8"/>
+
+    <rect x="56" y="120" width="144" height="96" rx="14" ry="14" fill="#ffffff"/>
+    <path d="M56 184 H200 V202 a14 14 0 0 1 -14 14 H70 a14 14 0 0 1 -14 -14 Z"
+          fill="#2e7df6" opacity="0.14"/>
+
+    <rect x="48" y="104" width="160" height="30" rx="12" ry="12" fill="#ffffff"/>
+    <rect x="104" y="114" width="48" height="9" rx="4.5" ry="4.5" fill="#2e7df6"/>
+
+    <g transform="rotate(-12 128 86)">
+      <rect x="92" y="46" width="72" height="62" rx="8" ry="8" fill="#ffffff"/>
+      <rect x="92" y="46" width="72" height="62" rx="8" ry="8" fill="none"
+            stroke="#2e7df6" stroke-width="4" opacity="0.18"/>
+      <path d="M108 78 L122 92 L150 60"
+            fill="none" stroke="url(#pcGradW)" stroke-width="11"
+            stroke-linecap="round" stroke-linejoin="round"/>
     </g>
-    <path d="M70 134 L108 172 L188 80"
-          fill="none" stroke="#ffffff" stroke-width="22"
-          stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="196" cy="72" r="11" fill="#e63d50"/>
+
+    <circle cx="171" cy="56" r="9" fill="#e63d50"/>
   </g>
 
   <!-- Wordmark text. No external web font: uses the system UI font stack at bold weight. -->

@@ -64,11 +64,32 @@ export function CandidateAccountability({ slug }: { slug: string }) {
     disclosure: transparency.disclosure,
   });
 
+  // Plain-language meaning of each public-record signal (short explainers, not opinions).
+  const transparencySignals: { label: string; value: number; meaning: string }[] = [
+    {
+      label: "Attendance",
+      value: transparency.attendance,
+      meaning:
+        "Share of the key votes where he actually cast a Yea/Nay (didn't miss the vote).",
+    },
+    {
+      label: "On-time filing",
+      value: transparency.filingTimeliness,
+      meaning:
+        "Share of his campaign-finance reports filed by the FEC deadline.",
+    },
+    {
+      label: "Disclosure",
+      value: transparency.disclosure,
+      meaning:
+        "Share of itemized donations that name the donor's employer and occupation.",
+    },
+  ];
+
   return (
     <ProfileSection
       title="Consistency & transparency"
       icon={ShieldCheck}
-      description="Do their stated positions match their votes — and how openly do they operate? A calculation, traced to the record."
     >
       <div className="space-y-6">
         {/* Consistency */}
@@ -79,6 +100,16 @@ export function CandidateAccountability({ slug }: { slug: string }) {
             sublabel="Stated positions vs. actual votes"
             inputs={consistency.inputs}
           />
+
+          {/* Plain-language definition so the number is self-explanatory (the one place explainers live). */}
+          <p className="text-xs leading-relaxed text-muted-foreground">
+            Do his stated positions match his actual votes? Compared across the{" "}
+            <span className="font-semibold text-foreground">
+              {comparedIssues.length}
+            </span>{" "}
+            {comparedIssues.length === 1 ? "issue" : "issues"} where he&rsquo;s
+            taken a public position &mdash; 100% means no contradictions found.
+          </p>
 
           {/* G3 traceability: stated (cited) vs. voted (cited), per shared issue. */}
           <ul className="space-y-2.5 border-t border-border pt-3">
@@ -163,6 +194,31 @@ export function CandidateAccountability({ slug }: { slug: string }) {
               value: typeof inp.value === "number" ? `${Math.round(inp.value)}%` : inp.value,
             }))}
           />
+
+          {/* Plain-language meaning of each signal, with its value — so the score isn't a black box. */}
+          <p className="text-xs leading-relaxed text-muted-foreground">
+            Three public-accountability signals, each from the public record:
+          </p>
+          <dl className="space-y-2.5 border-t border-border pt-3">
+            {transparencySignals.map((signal) => (
+              <div
+                key={signal.label}
+                className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-3"
+              >
+                <dt className="flex shrink-0 items-baseline gap-1.5 sm:w-36">
+                  <span className="text-xs font-semibold text-foreground">
+                    {signal.label}
+                  </span>
+                  <span className="tabular text-xs font-semibold text-brand-700">
+                    {Math.round(signal.value * 100)}%
+                  </span>
+                </dt>
+                <dd className="text-xs leading-relaxed text-muted-foreground">
+                  {signal.meaning}
+                </dd>
+              </div>
+            ))}
+          </dl>
 
           {transparency.sourceUrls && transparency.sourceUrls.length > 0 && (
             <div className="border-t border-border pt-3">

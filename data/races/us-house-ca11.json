@@ -1,0 +1,30 @@
+{
+  "id": "us-house-ca11",
+  "office": "U.S. House of Representatives — California's 11th District",
+  "subtitle": "Open seat (Pelosi retired) · June 2, 2026 top-two primary",
+  "sourceUrl": "https://www.fec.gov/data/elections/house/CA/11/2026/",
+  "candidates": [
+    {
+      "slug": "scott-wiener",
+      "name": "Scott Wiener",
+      "party": "Democratic",
+      "advanced": true,
+      "hasProfile": true,
+      "tier": 1,
+      "fecCandidateId": "H8CA11116",
+      "funding": {
+        "total": 3958852.97,
+        "sourceUrl": "https://www.fec.gov/data/candidate/H8CA11116/?cycle=2026"
+      }
+    },
+    { "slug": "connie-chan", "name": "Connie Chan", "party": "Democratic", "advanced": true, "hasProfile": false, "tier": 3, "fecCandidateId": "H6CA11268", "funding": { "total": 649305.20, "sourceUrl": "https://www.fec.gov/data/candidate/H6CA11268/?cycle=2026" } },
+    { "slug": "saikat-chakrabarti", "name": "Saikat Chakrabarti", "party": "Democratic", "advanced": false, "hasProfile": false, "tier": 3, "fecCandidateId": "H6CA11219", "funding": { "total": 0, "sourceUrl": "https://www.fec.gov/data/candidate/H6CA11219/?cycle=2026" } },
+    { "slug": "marie-hurabiell", "name": "Marie Hurabiell", "party": "Democratic", "advanced": false, "hasProfile": false, "tier": 3, "fecCandidateId": "H6CA11318", "funding": { "total": 631936.00, "sourceUrl": "https://www.fec.gov/data/candidate/H6CA11318/?cycle=2026" } },
+    { "slug": "cole-bettles", "name": "Cole Bettles", "party": "Democratic", "advanced": false, "hasProfile": false, "tier": 3, "fecCandidateId": "H6CA11227", "funding": { "total": 0, "sourceUrl": "https://www.fec.gov/data/candidate/H6CA11227/?cycle=2026" } },
+    { "slug": "omed-hamid", "name": "Omed Hamid", "party": "Democratic", "advanced": false, "hasProfile": false, "tier": 3, "fecCandidateId": "H6CA11284", "funding": { "total": 44997.00, "sourceUrl": "https://www.fec.gov/data/candidate/H6CA11284/?cycle=2026" } },
+    { "slug": "darren-helton", "name": "Darren Helton", "party": "Democratic", "advanced": false, "hasProfile": false, "tier": 3, "fecCandidateId": "H6CA11243", "funding": { "total": 5247.31, "sourceUrl": "https://www.fec.gov/data/candidate/H6CA11243/?cycle=2026" } },
+    { "slug": "daniel-wheeler", "name": "Daniel Wheeler", "party": "Democratic", "advanced": false, "hasProfile": false, "tier": 3, "fecCandidateId": "H6CA11276", "funding": { "total": 0, "sourceUrl": "https://www.fec.gov/data/candidate/H6CA11276/?cycle=2026" } },
+    { "slug": "jingchao-xiong", "name": "Jingchao Xiong", "party": "Republican", "advanced": false, "hasProfile": false, "tier": 3, "fecCandidateId": "H6CA11300", "funding": { "total": 0, "sourceUrl": "https://www.fec.gov/data/candidate/H6CA11300/?cycle=2026" } },
+    { "slug": "david-ganezer", "name": "David Ganezer", "party": "Republican", "advanced": false, "hasProfile": false, "tier": 3, "fecCandidateId": "H6CA11235", "funding": { "total": 60.33, "sourceUrl": "https://www.fec.gov/data/candidate/H6CA11235/?cycle=2026" } }
+  ]
+}

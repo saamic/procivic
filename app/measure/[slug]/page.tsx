@@ -64,11 +64,7 @@ export default async function MeasurePage({
       }
     >
       {/* E1 — What it does: plain-language summary, every claim cited. */}
-      <ProfileSection
-        title="What it does"
-        icon={FileText}
-        description="A plain-language summary of the measure, with sources."
-      >
+      <ProfileSection title="What it does" icon={FileText}>
         <div className="space-y-4 rounded-xl border border-border bg-card p-5 shadow-elev-1">
           <div className="space-y-3 text-sm leading-relaxed text-foreground">
             {paragraphs.map((p, i) => (
@@ -104,11 +100,7 @@ export default async function MeasurePage({
       </ProfileSection>
 
       {/* E2 — Who's funding it: support vs. oppose committees, traceable to DataSF. */}
-      <ProfileSection
-        title="Who's funding it"
-        icon={Network}
-        description="The committees backing each side, from SF Ethics filings (DataSF)."
-      >
+      <ProfileSection title="Who's funding it" icon={Network}>
         <div className="space-y-2">
           <FundingGraph
             variant="measure"
@@ -125,20 +117,12 @@ export default async function MeasurePage({
       </ProfileSection>
 
       {/* E3 — Your alignment: the user's values vs. this measure's YES position. */}
-      <ProfileSection
-        title="Your alignment"
-        icon={Scale}
-        description="How a YES vote lines up with your values — a calculation, not our opinion."
-      >
+      <ProfileSection title="Your alignment" icon={Scale}>
         <MeasureAlignment slug={m.slug} />
       </ProfileSection>
 
       {/* Ask — grounded, cited Q&A scoped to this measure's evidence (D4/H2). */}
-      <ProfileSection
-        title="Ask about this measure"
-        icon={MessageSquareQuote}
-        description="Grounded, cited answers drawn only from this measure's summary and funding record."
-      >
+      <ProfileSection title="Ask about this measure" icon={MessageSquareQuote}>
         <ProfileAsk
           entityType="measure"
           slug={m.slug}

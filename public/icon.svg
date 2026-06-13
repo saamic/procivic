@@ -10,8 +10,16 @@
   <!-- Full-bleed rounded tile for crisp favicon rendering -->
   <rect x="2" y="2" width="60" height="60" rx="15" ry="15" fill="url(#pcGradI)"/>
 
-  <!-- Bold ballot checkmark, simplified for small sizes -->
-  <path d="M18 33 L28 44 L47 21"
-        fill="none" stroke="#ffffff" stroke-width="7"
-        stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Ballot box body (bold, simplified) -->
+  <rect x="16" y="33" width="32" height="20" rx="4" ry="4" fill="#ffffff"/>
+
+  <!-- Lid with voting slot -->
+  <rect x="13" y="27" width="38" height="9" rx="4" ry="4" fill="#ffffff"/>
+  <rect x="26" y="30" width="12" height="3.5" rx="1.75" ry="1.75" fill="#2e7df6"/>
+
+  <!-- Ballot slip with check, dropping into the slot -->
+  <rect x="24" y="13" width="16" height="15" rx="2.5" ry="2.5" fill="#ffffff" transform="rotate(-10 32 20)"/>
+  <path d="M28 20 L31 23 L37 16"
+        fill="none" stroke="url(#pcGradI)" stroke-width="3.4"
+        stroke-linecap="round" stroke-linejoin="round" transform="rotate(-10 32 20)"/>
 </svg>

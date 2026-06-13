@@ -1,53 +1,126 @@
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, Scale, Network } from "lucide-react";
+import { Landmark, Building2, MapPin, CheckCircle2 } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { GradientText } from "@/components/brand/GradientText";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+import { HomeBallotActions } from "@/components/home/HomeBallotActions";
+import {
+  UPCOMING_ELECTIONS,
+  PAST_ELECTIONS,
+  type ElectionEntry,
+  type ElectionLevel,
+} from "@/config/elections";
+
+const LEVEL_ICON: Record<ElectionLevel, typeof Landmark> = {
+  Federal: Landmark,
+  State: Building2,
+  Local: MapPin,
+};
+
+function ElectionRow({ e }: { e: ElectionEntry }) {
+  const decoded = e.status === "decoded";
+  return (
+    <div
+      className={cn(
+        "rounded-xl border p-5",
+        decoded ? "glass ring-1 ring-brand-200" : "border-border bg-card/60"
+      )}
+    >
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+        <span className="tabular font-medium text-foreground">{e.dateLabel}</span>
+        {decoded && (
+          <Badge variant="solid" className="ml-auto gap-1">
+            <CheckCircle2 className="h-3 w-3" /> Decoded
+          </Badge>
+        )}
+      </div>
+
+      <h3 className="mt-1.5 text-lg font-semibold tracking-tight">{e.name}</h3>
+      <ul className="mt-2 space-y-1">
+        {e.items.map((item) => (
+          <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
+            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-400" aria-hidden />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-3 flex flex-wrap items-center gap-1.5">
+        {e.levels.map((l) => {
+          const Icon = LEVEL_ICON[l];
+          return (
+            <Badge key={l} variant="muted" className="gap-1">
+              <Icon className="h-3 w-3" /> {l}
+            </Badge>
+          );
+        })}
+      </div>
+
+      <div className="mt-4">
+        {decoded ? (
+          <HomeBallotActions ballotHref={e.href!} />
+        ) : (
+          <div className="flex flex-wrap items-center gap-2">
+            <Button variant="outline" size="sm" disabled>
+              View ballot
+            </Button>
+            <Button variant="outline" size="sm" disabled>
+              Align me
+            </Button>
+            <span className="text-xs text-muted-foreground">
+              {e.status === "upcoming" ? "Coming soon" : "Not yet decoded"}
+            </span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
-    <main className="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center gap-8 px-6 py-16 text-center">
-      <Logo variant="wordmark" className="h-9" />
-
-      <div className="space-y-4">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
+    <main className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
+      <header className="text-center">
+        <Logo variant="wordmark" className="mx-auto h-9 w-auto" />
+        <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
           Your ballot, <GradientText>decoded</GradientText>.
         </h1>
-        <p className="mx-auto max-w-2xl text-lg text-muted-foreground sm:text-xl">
-          See how your <em>actual</em> ballot — the June 2026 San Francisco primary —
-          fits your values, backed by votes and money, not talking points. Every
-          recommendation comes with a confidence score and a cited, reviewable breakdown.
+        <p className="mx-auto mt-2 max-w-xl text-muted-foreground">
+          Pick an election in San Francisco &amp; California — view the ballot, or align it to
+          your values. Backed by votes and money, every claim cited.
         </p>
-      </div>
+      </header>
 
-      <div className="flex flex-wrap items-center justify-center gap-3">
-        <Button asChild variant="gradient" size="lg">
-          <Link href="/quiz">
-            Decode my ballot <ArrowRight className="h-4 w-4" />
-          </Link>
-        </Button>
-        <Button asChild variant="outline" size="lg">
-          <Link href="/ballot">See the ballot</Link>
-        </Button>
-      </div>
+      <section className="mt-10">
+        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+          Upcoming
+        </h2>
+        <div className="space-y-3">
+          {UPCOMING_ELECTIONS.map((e) => (
+            <ElectionRow key={e.id} e={e} />
+          ))}
+        </div>
+      </section>
 
-      <div className="mt-4 grid w-full gap-4 sm:grid-cols-3">
-        {[
-          { icon: Scale, title: "Personalized", body: "Your values vs. the public record — never our opinion." },
-          { icon: ShieldCheck, title: "Cited & verified", body: "Every claim traces to a source; data is precomputed + verified." },
-          { icon: Network, title: "Follow the money", body: "An interactive funding graph straight from FEC + SF-Ethics filings." },
-        ].map((f) => (
-          <div key={f.title} className="glass rounded-xl p-5 text-left">
-            <f.icon className="h-6 w-6 text-brand-500" />
-            <h2 className="mt-3 font-semibold">{f.title}</h2>
-            <p className="mt-1 text-sm text-muted-foreground">{f.body}</p>
-          </div>
-        ))}
-      </div>
+      <section className="mt-8">
+        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+          Recent &amp; past
+        </h2>
+        <div className="space-y-3">
+          {PAST_ELECTIONS.map((e) => (
+            <ElectionRow key={e.id} e={e} />
+          ))}
+        </div>
+      </section>
 
-      <footer className="mt-2 text-xs text-muted-foreground">
-        <Link href="/methodology" className="underline-offset-2 hover:text-brand-700 hover:underline">
-          How it works
+      <footer className="mt-10 text-center text-xs text-muted-foreground">
+        <Link
+          href="/methodology"
+          className="underline-offset-2 hover:text-brand-700 hover:underline"
+        >
+          How Procivic works
         </Link>
       </footer>
     </main>

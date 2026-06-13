@@ -18,6 +18,7 @@ import Link from "next/link";
 import { Sparkles, ScrollText, ArrowRight } from "lucide-react";
 
 import { getBallot, type BallotItem } from "@/lib/ballot";
+import { hasRace } from "@/lib/races";
 import { MEASURES } from "@/config/measures";
 import { useUserValues } from "@/lib/userValues";
 import {
@@ -76,7 +77,7 @@ export default function BallotClient() {
   // verdict before localStorage loads.
   if (!ready) {
     return (
-      <main className="mx-auto w-full max-w-3xl px-5 py-10 sm:px-6 sm:py-14">
+      <main className="mx-auto w-full max-w-4xl px-5 py-10 sm:px-6 sm:py-14">
         <div className="space-y-3">
           <Skeleton className="h-9 w-2/3" />
           <Skeleton className="h-5 w-1/2" />
@@ -105,7 +106,7 @@ export default function BallotClient() {
     : 0;
 
   return (
-    <main className="mx-auto w-full max-w-3xl px-5 py-10 sm:px-6 sm:py-14">
+    <main className="mx-auto w-full max-w-4xl px-5 py-10 sm:px-6 sm:py-14">
       <header>
         <p className="text-sm font-medium text-muted-foreground">
           {ballot.jurisdiction}
@@ -181,15 +182,23 @@ export default function BallotClient() {
           // Candidate race. Decode against the best scorable candidate, if any.
           const rec = recommendCandidateRace(item, values);
 
+          // A race with its own page (the full candidate field) links to /race/{id} rather than
+          // straight to one candidate (e.g. CA-11 → the race page, not just Wiener). Races
+          // without a race page keep linking to the relevant candidate profile, unchanged.
+          const hasRacePage = hasRace(item.id);
+
           if (rec) {
-            // A scorable candidate exists (e.g. Tier-1 Wiener) — link to their profile (C3).
+            // A scorable candidate exists (e.g. Tier-1 Wiener) — link to the race page if one
+            // exists, else to that candidate's profile (C3).
             return (
               <li key={item.id}>
                 <BallotItemCard
                   variant="candidate"
                   title={item.office}
                   subtitle={item.subtitle}
-                  href={`/candidate/${rec.candidateSlug}`}
+                  href={
+                    hasRacePage ? `/race/${item.id}` : `/candidate/${rec.candidateSlug}`
+                  }
                   recommendation={toCardRecommendation(rec)}
                   why={rec.why}
                 />
@@ -217,7 +226,9 @@ export default function BallotClient() {
                   variant="candidate"
                   title={item.office}
                   subtitle={item.subtitle}
-                  href={`/candidate/${profiled.slug}`}
+                  href={
+                    hasRacePage ? `/race/${item.id}` : `/candidate/${profiled.slug}`
+                  }
                   tierLabel={tierLabel}
                   why="Deep voting + funding record — take the quiz to see your match."
                 />

@@ -7,21 +7,32 @@
     </linearGradient>
   </defs>
 
-  <!-- Rounded-square ballot tile -->
+  <!-- Rounded-square brand tile -->
   <rect x="16" y="16" width="224" height="224" rx="52" ry="52" fill="url(#pcGrad)"/>
 
-  <!-- Ascending signal bars (the "decoded" data behind the vote) -->
-  <g fill="#ffffff" opacity="0.28">
-    <rect x="74"  y="150" width="22" height="40" rx="8"/>
-    <rect x="117" y="126" width="22" height="64" rx="8"/>
-    <rect x="160" y="98"  width="22" height="92" rx="8"/>
+  <!-- Ballot box (body) -->
+  <rect x="56" y="120" width="144" height="96" rx="14" ry="14" fill="#ffffff"/>
+
+  <!-- Box front shading panel for a touch of depth -->
+  <rect x="56" y="176" width="144" height="40" rx="14" ry="14" fill="#ffffff" opacity="0.0"/>
+  <path d="M56 184 H200 V202 a14 14 0 0 1 -14 14 H70 a14 14 0 0 1 -14 -14 Z"
+        fill="#2e7df6" opacity="0.14"/>
+
+  <!-- Lid of the box with the voting slot -->
+  <rect x="48" y="104" width="160" height="30" rx="12" ry="12" fill="#ffffff"/>
+  <rect x="104" y="114" width="48" height="9" rx="4.5" ry="4.5" fill="#2e7df6"/>
+
+  <!-- Ballot slip going into the slot -->
+  <g transform="rotate(-12 128 86)">
+    <rect x="92" y="46" width="72" height="62" rx="8" ry="8" fill="#ffffff"/>
+    <rect x="92" y="46" width="72" height="62" rx="8" ry="8" fill="none"
+          stroke="#2e7df6" stroke-width="4" opacity="0.18"/>
+    <!-- Check mark on the slip -->
+    <path d="M108 78 L122 92 L150 60"
+          fill="none" stroke="url(#pcGrad)" stroke-width="11"
+          stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 
-  <!-- Ballot checkmark that rises like a signal -->
-  <path d="M70 134 L108 172 L188 80"
-        fill="none" stroke="#ffffff" stroke-width="22"
-        stroke-linecap="round" stroke-linejoin="round"/>
-
-  <!-- Tiny civic accent dot -->
-  <circle cx="196" cy="72" r="11" fill="#e63d50"/>
+  <!-- Tiny civic accent: ballot drop highlight -->
+  <circle cx="171" cy="56" r="9" fill="#e63d50"/>
 </svg>

@@ -8,6 +8,7 @@ import { CandidateAccountability } from "@/components/profile/CandidateAccountab
 import { ProfileAsk } from "@/components/profile/ProfileAsk";
 import { FundingGraphInteractive } from "@/components/profile/FundingGraphInteractive";
 import { FundingGraph } from "@/components/shared/FundingGraph";
+import { RoleBadge } from "@/components/profile/RoleBadge";
 import { Badge } from "@/components/ui/badge";
 
 export const dynamicParams = false;
@@ -56,17 +57,23 @@ export default async function CandidatePage({
             <Badge variant="solid">Tier 1 · deep record</Badge>
           ) : null}
           {party ? <Badge variant="outline">{party}</Badge> : null}
-          {currentRole ? <Badge variant="muted">{currentRole}</Badge> : null}
+          {currentRole ? (
+            <RoleBadge
+              role={currentRole}
+              explanation="A member of California's State Senate — the upper house of the state legislature (40 senators statewide). District 11 covers eastern San Francisco. State senators write, amend, and vote on California law; those floor votes are the public record Procivic uses to derive his issue stances."
+            />
+          ) : null}
         </>
       }
     >
-      <CandidateEvidence stances={c.stances} votes={c.votes} />
+      <CandidateEvidence
+        stances={c.stances}
+        votes={c.votes}
+        statements={c.statements}
+        statedStances={(c as any).statedStances}
+      />
 
-      <ProfileSection
-        title="Follow the money"
-        icon={Network}
-        description="Who funds this candidate — itemized individual contributions (OpenFEC). Hover a node for the donor and the source record."
-      >
+      <ProfileSection title="Follow the money" icon={Network}>
         <div className="space-y-4">
           <FundingGraphInteractive
             candidateName={c.name}
@@ -85,11 +92,7 @@ export default async function CandidatePage({
 
       <CandidateAccountability slug={slug} />
 
-      <ProfileSection
-        title="Ask about their record"
-        icon={MessageSquareQuote}
-        description="Grounded, cited answers drawn only from this candidate's votes, funding, and stated positions."
-      >
+      <ProfileSection title="Ask about their record" icon={MessageSquareQuote}>
         <ProfileAsk
           entityType="candidate"
           slug={c.slug}
