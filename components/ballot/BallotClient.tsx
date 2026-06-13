@@ -41,6 +41,15 @@ function measureTitle(measureSlug: string, code: string): string {
   return def ? `Prop ${def.code} — ${def.shortTitle}` : `Prop ${code}`;
 }
 
+/**
+ * Short factual summary of what a measure IS (≤2 sentences), looked up by slug. Shown as the
+ * card subtitle so a measure card describes the measure itself rather than the user's values —
+ * the YES/NO + alignment pill still carries the decoded recommendation.
+ */
+function measureSummary(measureSlug: string): string | undefined {
+  return MEASURES.find((m) => m.slug === measureSlug)?.subject;
+}
+
 /** Map a recommendation to the card's recommendation prop (or undefined to show a placeholder). */
 function toCardRecommendation(
   rec: Recommendation | null,
@@ -190,9 +199,9 @@ export default function BallotClient() {
                 <BallotItemCard
                   variant="measure"
                   title={measureTitle(item.measureSlug, item.code)}
+                  subtitle={measureSummary(item.measureSlug)}
                   href={`/measure/${item.measureSlug}`}
                   recommendation={toCardRecommendation(rec)}
-                  why={rec?.why}
                 />
               </li>
             );

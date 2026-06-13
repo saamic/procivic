@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Landmark, Building2, MapPin, CheckCircle2 } from "lucide-react";
+import { Landmark, Building2, MapPin } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { GradientText } from "@/components/brand/GradientText";
 import { Button } from "@/components/ui/button";
@@ -19,6 +19,12 @@ const LEVEL_ICON: Record<ElectionLevel, typeof Landmark> = {
   Local: MapPin,
 };
 
+/**
+ * Tint the (illustrative) civic-status badge: a positive brand tint for engaged
+ * statuses, muted otherwise. See the footnote — these are demo placeholders.
+ */
+const POSITIVE_CIVIC_STATUSES = new Set(["Registered", "Voted"]);
+
 function ElectionRow({ e }: { e: ElectionEntry }) {
   const decoded = e.status === "decoded";
   return (
@@ -30,11 +36,12 @@ function ElectionRow({ e }: { e: ElectionEntry }) {
     >
       <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
         <span className="tabular font-medium text-foreground">{e.dateLabel}</span>
-        {decoded && (
-          <Badge variant="solid" className="ml-auto gap-1">
-            <CheckCircle2 className="h-3 w-3" /> Decoded
-          </Badge>
-        )}
+        <Badge
+          variant={POSITIVE_CIVIC_STATUSES.has(e.civicStatus) ? "default" : "muted"}
+          className="ml-auto"
+        >
+          {e.civicStatus}
+        </Badge>
       </div>
 
       <h3 className="mt-1.5 text-lg font-semibold tracking-tight">{e.name}</h3>
@@ -85,7 +92,7 @@ export default function Home() {
       <header className="text-center">
         <Logo variant="wordmark" className="mx-auto h-14 w-auto sm:h-16" />
         <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
-          Your ballot, <GradientText>decoded</GradientText>.
+          Your ballot, <GradientText>aligned</GradientText>.
         </h1>
       </header>
 
@@ -111,7 +118,10 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="mt-10 text-center text-xs text-muted-foreground">
+      <footer className="mt-10 space-y-2 text-center text-xs text-muted-foreground">
+        <p>
+          Voter statuses (Registered, Voted) are illustrative — not real voter data.
+        </p>
         <Link
           href="/methodology"
           className="underline-offset-2 hover:text-brand-700 hover:underline"

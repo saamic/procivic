@@ -13,6 +13,7 @@ export function StanceBar({
   compareValue,
   entityLabel = "Them",
   compareLabel = "You",
+  showLegend = true,
   className,
 }: {
   value: number; // -1..+1
@@ -21,6 +22,7 @@ export function StanceBar({
   compareValue?: number; // -1..+1 (e.g. the user)
   entityLabel?: string;
   compareLabel?: string;
+  showLegend?: boolean; // when false, omit the You/Them key (e.g. a shared legend lives elsewhere)
   className?: string;
 }) {
   const toPct = (v: number) => ((clamp(v, -1, 1) + 1) / 2) * 100;
@@ -53,7 +55,7 @@ export function StanceBar({
         <span className="max-w-[45%]">{poleNeg}</span>
         <span className="max-w-[45%] text-right">{polePos}</span>
       </div>
-      {cmp != null && (
+      {cmp != null && showLegend && (
         <div className="flex items-center gap-3 pt-0.5 text-[11px] text-muted-foreground">
           <span className="inline-flex items-center gap-1">
             <span className="h-2.5 w-2.5 rounded-full border-2 border-brand-500 bg-white" />

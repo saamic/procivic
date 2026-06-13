@@ -92,9 +92,34 @@ export function CandidateEvidence({
     (row): row is { issue: (typeof ISSUES)[number]; stance: Stance } => row !== null
   );
 
+  // The per-issue StanceBars share one key, shown once in the section header. It only
+  // appears when the visitor's stance markers actually render below (i.e. they have a vector).
+  const showSharedLegend =
+    rows.length > 0 &&
+    ready &&
+    hasVector &&
+    rows.some(({ issue }) => typeof values.stances[issue.id] === "number");
+
   return (
     <div className={className}>
-      <ProfileSection title="Where they stand" icon={Scale}>
+      <ProfileSection
+        title="Where they stand"
+        icon={Scale}
+        aside={
+          showSharedLegend ? (
+            <div className="flex items-center gap-3 text-[11px] text-muted-foreground">
+              <span className="inline-flex items-center gap-1">
+                <span className="h-2.5 w-2.5 rounded-full border-2 border-brand-500 bg-white" />
+                You
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <span className="h-2.5 w-2.5 rounded-full bg-accent-500" />
+                Wiener
+              </span>
+            </div>
+          ) : undefined
+        }
+      >
         {rows.length === 0 ? (
           <p className="rounded-lg border border-border bg-muted/40 p-4 text-sm text-muted-foreground">
             No vote-derived stances are available for this candidate yet.
@@ -149,6 +174,7 @@ export function CandidateEvidence({
                           polePos={issue.polePos}
                           entityLabel="Wiener"
                           compareLabel="You"
+                          showLegend={false}
                         />
                       ) : (
                         <p className="text-sm text-muted-foreground">

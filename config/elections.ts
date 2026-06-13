@@ -18,6 +18,12 @@ export interface ElectionEntry {
   href?: string;
   /** The marquee contests/measures on this ballot, shown as a bulleted list. */
   items: string[];
+  /**
+   * ILLUSTRATIVE per-election civic status (e.g. "Registered", "Voted", "Didn't vote").
+   * These are demo placeholders — Procivic does not have the user's real
+   * voter-registration or turnout data. Labeled as illustrative in the UI.
+   */
+  civicStatus: string;
 }
 
 export const ELECTIONS: ElectionEntry[] = [
@@ -29,6 +35,7 @@ export const ELECTIONS: ElectionEntry[] = [
     jurisdiction: "San Francisco · California",
     levels: ["Federal", "State", "Local"],
     status: "upcoming",
+    civicStatus: "Registered",
     items: [
       "U.S. House CA-11 runoff — Wiener vs. Chan",
       "Governor of California",
@@ -45,6 +52,7 @@ export const ELECTIONS: ElectionEntry[] = [
     levels: ["Federal", "State", "Local"],
     status: "decoded",
     href: "/ballot",
+    civicStatus: "Voted",
     items: [
       "U.S. House CA-11 — Pelosi's open seat",
       "Governor (primary)",
@@ -60,6 +68,7 @@ export const ELECTIONS: ElectionEntry[] = [
     jurisdiction: "San Francisco · California",
     levels: ["Federal", "State", "Local"],
     status: "past",
+    civicStatus: "Voted",
     items: [
       "President of the United States",
       "U.S. House & Senate",
@@ -75,6 +84,7 @@ export const ELECTIONS: ElectionEntry[] = [
     jurisdiction: "California",
     levels: ["Federal", "State"],
     status: "past",
+    civicStatus: "Didn't vote",
     items: [
       "Presidential primary",
       "U.S. Senate",
