@@ -10,6 +10,12 @@ import { ProfileSection } from "@/components/shared/ProfileShell";
 import { IssueBadge } from "@/components/shared/IssueBadge";
 import { SourceLink } from "@/components/shared/SourceLink";
 import { StanceBar } from "@/components/shared/StanceBar";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 import { useUserValues } from "@/lib/userValues";
 import { cn } from "@/lib/utils";
 
@@ -42,12 +48,30 @@ function PartLabel({
   );
 }
 
-/** "How it aligns with you" — agreement bucket from the user vs. candidate stance. */
-function alignmentLabel(userStance: number, candidateStance: number): string {
+/**
+ * "How it aligns with you" — agreement bucket from the user vs. candidate stance,
+ * paired with score-language token classes (aligns → brand, partial → accent,
+ * differs → signal) following the ConfidenceBadge chip convention.
+ */
+function alignment(
+  userStance: number,
+  candidateStance: number
+): { label: string; cls: string } {
   const agree = 1 - Math.abs(userStance - candidateStance) / 2;
-  if (agree >= 0.66) return "Aligns with you";
-  if (agree >= 0.4) return "Partial overlap";
-  return "Differs from you";
+  if (agree >= 0.66)
+    return {
+      label: "Aligns with you",
+      cls: "bg-brand-100 text-brand-800 border-brand-200",
+    };
+  if (agree >= 0.4)
+    return {
+      label: "Partial overlap",
+      cls: "bg-accent-100 text-accent-800 border-accent-200",
+    };
+  return {
+    label: "Differs from you",
+    cls: "bg-signal-100 text-signal-800 border-signal-200",
+  };
 }
 
 /**
@@ -89,70 +113,92 @@ export function CandidateEvidence({
           </p>
         ) : (
           <>
-            <ul className="space-y-3">
+            <Accordion type="multiple" className="space-y-3">
               {rows.map(({ issue, stance }) => {
                 const statement = statements?.find((s) => s.issue === issue.id);
                 const vote = votes.find((v) => v.issue === issue.id);
                 const userStance = values.stances[issue.id];
                 const hasUserStance =
                   ready && hasVector && typeof userStance === "number";
+                const agreement = hasUserStance
+                  ? alignment(userStance, stance.value)
+                  : null;
 
                 return (
-                  <li
+                  <AccordionItem
                     key={issue.id}
-                    className="rounded-xl border border-border bg-card p-4 shadow-elev-1"
+                    value={issue.id}
+                    className="rounded-xl border border-border bg-card px-4 shadow-elev-1"
                   >
-                    <IssueBadge issue={issue.id} />
-
-                    <div className="mt-3 grid gap-x-6 gap-y-3 sm:grid-cols-2">
-                      {/* Said */}
-                      <div className="space-y-1">
-                        <PartLabel icon={Quote}>Said</PartLabel>
-                        {statement ? (
-                          <p className="text-sm leading-snug text-foreground">
-                            &ldquo;{statement.text}&rdquo;{" "}
-                            <SourceLink href={statement.sourceUrl} className="align-baseline">
-                              source
-                            </SourceLink>
-                          </p>
+                    <AccordionTrigger className="hover:no-underline">
+                      <span className="flex flex-1 flex-wrap items-center gap-x-3 gap-y-1.5 pr-3">
+                        <IssueBadge issue={issue.id} />
+                        {agreement ? (
+                          <span
+                            className={cn(
+                              "inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-semibold",
+                              agreement.cls
+                            )}
+                          >
+                            {agreement.label}
+                          </span>
                         ) : (
-                          <p className="text-sm text-muted-foreground">
-                            No public statement on record.
-                          </p>
+                          <span className="text-[11px] font-medium text-muted-foreground">
+                            Take the quiz to compare
+                          </span>
                         )}
-                      </div>
+                      </span>
+                    </AccordionTrigger>
 
-                      {/* Voted */}
-                      <div className="space-y-1">
-                        <PartLabel icon={Gavel}>Voted</PartLabel>
-                        {vote ? (
+                    <AccordionContent>
+                      <div className="grid gap-x-6 gap-y-3 sm:grid-cols-2">
+                        {/* Said */}
+                        <div className="space-y-1">
+                          <PartLabel icon={Quote}>Said</PartLabel>
+                          {statement ? (
+                            <p className="text-sm leading-snug text-foreground">
+                              &ldquo;{statement.text}&rdquo;{" "}
+                              <SourceLink href={statement.sourceUrl} className="align-baseline">
+                                source
+                              </SourceLink>
+                            </p>
+                          ) : (
+                            <p className="text-sm text-muted-foreground">
+                              No public statement on record.
+                            </p>
+                          )}
+                        </div>
+
+                        {/* Voted */}
+                        <div className="space-y-1">
+                          <PartLabel icon={Gavel}>Voted</PartLabel>
+                          {vote ? (
+                            <p className="text-sm leading-snug text-foreground">
+                              <span className="font-medium">{vote.position}</span> on{" "}
+                              {vote.billId} — {vote.title}{" "}
+                              <SourceLink href={vote.sourceUrl} className="align-baseline">
+                                roll-call
+                              </SourceLink>
+                            </p>
+                          ) : (
+                            <p className="text-sm text-muted-foreground">
+                              No roll-call vote on record.
+                            </p>
+                          )}
+                        </div>
+
+                        {/* What it means */}
+                        <div className="space-y-1">
+                          <PartLabel icon={Compass}>What it means</PartLabel>
                           <p className="text-sm leading-snug text-foreground">
-                            <span className="font-medium">{vote.position}</span> on{" "}
-                            {vote.billId} — {vote.title}{" "}
-                            <SourceLink href={vote.sourceUrl} className="align-baseline">
-                              roll-call
-                            </SourceLink>
+                            {describeStance(stance.value, issue)}
                           </p>
-                        ) : (
-                          <p className="text-sm text-muted-foreground">
-                            No roll-call vote on record.
-                          </p>
-                        )}
-                      </div>
+                        </div>
 
-                      {/* What it means */}
-                      <div className="space-y-1">
-                        <PartLabel icon={Compass}>What it means</PartLabel>
-                        <p className="text-sm leading-snug text-foreground">
-                          {describeStance(stance.value, issue)}
-                        </p>
-                      </div>
-
-                      {/* How it aligns with you */}
-                      <div className="space-y-1.5">
-                        <PartLabel icon={Users}>How it aligns with you</PartLabel>
-                        {hasUserStance ? (
-                          <div className="space-y-1.5">
+                        {/* How it aligns with you */}
+                        <div className="space-y-1.5">
+                          <PartLabel icon={Users}>How it aligns with you</PartLabel>
+                          {hasUserStance ? (
                             <StanceBar
                               value={stance.value}
                               compareValue={userStance}
@@ -161,27 +207,24 @@ export function CandidateEvidence({
                               entityLabel="Wiener"
                               compareLabel="You"
                             />
-                            <p className="text-xs font-medium text-foreground">
-                              {alignmentLabel(userStance, stance.value)}
+                          ) : (
+                            <p className="text-sm text-muted-foreground">
+                              <Link
+                                href="/quiz"
+                                className="font-medium text-brand-600 underline-offset-2 hover:text-brand-700 hover:underline"
+                              >
+                                Take the quiz
+                              </Link>{" "}
+                              to see how this aligns with you.
                             </p>
-                          </div>
-                        ) : (
-                          <p className="text-sm text-muted-foreground">
-                            <Link
-                              href="/quiz"
-                              className="font-medium text-brand-600 underline-offset-2 hover:text-brand-700 hover:underline"
-                            >
-                              Take the quiz
-                            </Link>{" "}
-                            to see how this aligns with you.
-                          </p>
-                        )}
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </li>
+                    </AccordionContent>
+                  </AccordionItem>
                 );
               })}
-            </ul>
+            </Accordion>
 
             <p className="mt-3 text-xs text-muted-foreground">
               These stances are derived from real CA State Senate roll-call votes; pole
