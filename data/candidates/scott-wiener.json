@@ -299,6 +299,71 @@
       "text": "When masked agents began disappearing people off the streets, Scott passed first-in-the-nation legislation to make it illegal for ICE to wear masks, and he is now working to end impunity for ICE by allowing you to sue them when they violate your rights — it's currently nearly impossible to sue them under federal law."
     }
   ],
+  "statedStances": [
+    {
+      "issue": "housing",
+      "value": 1.0,
+      "basis": "stated",
+      "derivedFrom": [
+        "https://www.scottwiener.com/priorities"
+      ]
+    },
+    {
+      "issue": "healthcare",
+      "value": 1.0,
+      "basis": "stated",
+      "derivedFrom": [
+        "https://www.scottwiener.com/priorities"
+      ]
+    },
+    {
+      "issue": "climate",
+      "value": 1.0,
+      "basis": "stated",
+      "derivedFrom": [
+        "https://www.scottwiener.com/priorities"
+      ]
+    },
+    {
+      "issue": "immigration",
+      "value": 1.0,
+      "basis": "stated",
+      "derivedFrom": [
+        "https://www.scottwiener.com/priorities"
+      ]
+    }
+  ],
+  "consistencyNote": "No stated-vs-voted contradiction found: on all four issues with a citable stated position (housing, healthcare, climate, immigration), Wiener's stated direction (+1) matches his vote-derived stance (+1), so computeConsistency finds no opposite-sign receipt.",
+  "transparency": {
+    "attendance": 1.0,
+    "filingTimeliness": 1.0,
+    "disclosure": 0.6407,
+    "components": [
+      {
+        "label": "Key-vote attendance",
+        "value": 1.0,
+        "basis": "10 of 10 curated CA Senate key votes (votes[]) had a Yea/Nay cast by Wiener (none absent); computed from cached data/raw/os_*.json roll-call rosters.",
+        "count": { "cast": 10, "total": 10 }
+      },
+      {
+        "label": "FEC filing timeliness",
+        "value": 1.0,
+        "basis": "OpenFEC exposes no explicit late flag for committee C00909283's 28 filings, so timeliness is derived for the 4 original (amendment_indicator=N) periodic F3 reports with standard statutory deadlines (Q2 2025, Q3 2025, Year-End 2025, Q1 2026): all 4 were received on or before the FEC quarterly deadline (15th of the month after quarter-end; Year-End by Jan 31). Amendments (A) and 48-hour F6 notices are excluded as they are not late-filing events. On-time = 4 of 4.",
+        "count": { "onTime": 4, "total": 4 }
+      },
+      {
+        "label": "Donor disclosure completeness",
+        "value": 0.6407,
+        "basis": "2,049 of 3,198 itemized INDIVIDUAL contributions (committee C00909283, 2026 cycle) carry BOTH a contributor_employer AND a contributor_occupation; 1,105 carry neither and 44 carry occupation only (0 carry employer only). Computed across the full Schedule A set from OpenFEC.",
+        "count": { "bothEmployerAndOccupation": 2049, "total": 3198 }
+      }
+    ],
+    "sourceUrls": [
+      "https://openstates.org/ca/bills/20232024/SB423/",
+      "https://api.open.fec.gov/v1/committee/C00909283/filings/",
+      "https://api.open.fec.gov/v1/schedules/schedule_a/?committee_id=C00909283&two_year_transaction_period=2026&is_individual=true"
+    ]
+  },
   "meta": {
     "generatedAt": "2026-06-13",
     "sources": {
