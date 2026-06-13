@@ -243,7 +243,7 @@ interface Ballot { id: string; jurisdiction: string; date: string; items: Ballot
 |---|---|---|
 | Federal member identity & votes | **Congress.gov API** | needs free api.data.gov key (already in `.env.local`). *Member-level vote positions can be thin via Congress.gov — fall back to House Clerk roll-call XML; resolve the exact endpoint at ingest and record it in `NOTES.md`.* |
 | Federal money (candidate funding) | **OpenFEC API** | same key |
-| State legislator votes (Wiener) | **OpenStates v3 API** | the Tier-1 voting record. ✅ key in `.env.local`. **500 req/day cap** → cache raw responses, pull only curated issue-tagged key votes. See `NOTES.md`. |
+| State legislator votes (Wiener) | **OpenStates v3 API** | the Tier-1 voting record. ✅ key in `.env.local`. **500 req/day + 1 req/sec** → serialize + cache raw responses; pull only curated issue-tagged key votes. See `NOTES.md`. |
 | Congress ↔ FEC ID join | **unitedstates/congress-legislators** (GitHub) | the crosswalk that makes joins correct |
 | SF measure funding (for/against) | **SF Ethics via DataSF SODA** — Filers `4c8t-ngau`, Summary `9ggq-m8hp`, Transactions `pitq-e56w` | ✅ verified. Committee→measure link is by **committee name** (curate a small map at ingest); donor detail in Transactions. See `NOTES.md`. |
 | SF measure plain-language | **SF.gov official + SPUR + Ballotpedia** | summaries traceable to an official source |
@@ -353,6 +353,8 @@ Every candidate and measure profile has an **Ask** affordance: the user types a 
 
 *No Supabase/Postgres/auth — the dataset is small and fixed; a DB would cost time and add demo-day failure surface for zero benefit.*
 
+> **Scaffold reconciliation (6/13):** repo `github.com/saamic/procivic` is scaffolded with **Next.js 15 + React 19 + TypeScript + Tailwind v3** at the repo root (no `src/`). **shadcn/ui not yet initialized** (`npx shadcn@latest init`); `node_modules` not yet installed (`npm install` + `npm run build` before any push). Build the app *on* this scaffold — do not re-scaffold.
+
 ---
 
 ## 13. Build & orchestration plan
@@ -372,7 +374,7 @@ Every candidate and measure profile has an **Ask** affordance: the user types a 
 
 - **`/goal` = `RUBRIC.md`.** The builder hillclimbs until every gate passes; it may **not** self-certify.
 - **Verifier sub-agent** (fresh context) grades each slice against the rubric, re-fetching from source — `{id, pass, evidence}`, default FAIL if unconfirmed.
-- **Dynamic workflow `ingest-ballot`** — `pipeline` over ballot items: *fetch → derive → adversarially verify → write JSON*. Saved to `workflows/` as the reusable artifact (rerunnable on a new ballot = the Orchestration story). A fresh rewrite supersedes the archived draft.
+- **Dynamic workflow `ingest-ballot`** — `pipeline` over ballot items: *fetch → derive → adversarially verify → write JSON*. Saved to `workflows/` as the reusable artifact (rerunnable on a new ballot = the Orchestration story). A fresh rewrite supersedes the archived draft. **Throttle OpenStates to ≤1 req/sec, serialized, with cached raw responses** (500/day + 1/sec cap — `NOTES.md`); other sources can parallelize.
 - **Memory `NOTES.md`** — every API quirk / ID-join gotcha becomes a written rule, not a re-derivation.
 - **Deploy first:** hello-world to Vercel before there's anything to lose; every slice auto-deploys.
 
