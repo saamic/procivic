@@ -67,7 +67,7 @@ They nest cleanly: **the ballot is the home screen** (Goal 2) → **each item dr
 - **Public repo**, all demoed code in it, judges can clearly see what was built **today**. → Fresh repo, clean commit history, `README` states what's new.
 - **Live URL** is the submission. → Deploy to Vercel first thing (hello-world before there's anything to lose).
 - **1-minute demo video** + brief + rubric + session log submitted. → `BRIEF.md`/`RUBRIC.md` live in the repo; record the verifier-catches-a-bug moment.
-- **Not a banned project.** We are **not**: a RAG app, a Streamlit app, an image analyzer, a chatbot, a personality/sports analyzer, or a medical/mental-health/nutrition bot.
+- **Not a banned project.** We are **not**: a RAG app, a Streamlit app, an image analyzer, a chatbot, a personality/sports analyzer, or a medical/mental-health/nutrition bot. *(The profile Q&A in §8.4 is a cited, evidence-scoped **feature**, not the product — the centerpiece stays the personalized ballot verdict, not a chat interface.)*
 
 ### 2.3 The two framing risks, and how we neutralize them
 
@@ -86,10 +86,10 @@ A San Franciscan's actual June 2, 2026 ballot was a **consolidated statewide dir
 
 - **4 local SF measures** — e.g. **Measure A** (earthquake-safety bond), **Prop D** ("overpaid CEO tax"), + two more.
 - **2 Supervisor races** — Districts 4 and 8.
-- **A congressional primary** — CA-11 (most of SF) and CA-15 (Rep. Kevin Mullin, incumbent), depending on precinct.
+- **The marquee race — U.S. House CA-11:** Pelosi's **open seat** (she retired after ~40 years). The June top-two primary advanced **Scott Wiener** (CA State Senator) and **Connie Chan** (SF Supervisor). *(CA-15 / Rep. Mullin covers only a small slice of SF.)*
 - **Statewide** primary races (Governor, etc.).
 
-We pick **one representative precinct/district** so the ballot is concrete and complete (default: a district whose congressional race has an incumbent with a real legislative record for the Tier-1 showcase).
+**Demo precinct = CA-11** (most of SF). **Tier-1 deep profile = Scott Wiener** — his real **CA State Senate** voting record (OpenStates) + his **congressional funding** (OpenFEC `H8CA11116`) + the consistency between the two. **Connie Chan** is the local contrast (SF Supervisor; SF-Ethics funding, BOS record). Pelosi's open seat is also the single most demo-compelling item on the ballot. *(Tier-1 needs a free OpenStates API key — see `NOTES.md`.)*
 
 ### 3.2 Tiered data strategy = the confidence score, for free
 
@@ -97,7 +97,7 @@ Data quality varies by item type. Rather than hide that, we surface it as a **co
 
 | Tier | Items | Evidence available | Confidence |
 |---|---|---|---|
-| **1 — Deep showcase** | A federal incumbent (Rep. Mullin, CA-15 via Congress.gov) — or State Sen. Wiener running in CA-11, whose **state** record is in OpenStates | roll-call votes + OpenFEC money + vote-derived stances + consistency + transparency | **High** |
+| **1 — Deep showcase** | **Scott Wiener** (CA-11 candidate for Pelosi's seat): CA State Senate votes via **OpenStates** + congressional funding via **OpenFEC** (`H8CA11116`) | roll-call votes + money + vote-derived stances + consistency + transparency | **High** |
 | **2 — The local heart** | The 4 SF measures | official + SPUR/Ballotpedia plain-language summaries + SF Ethics funding (for/against) + alignment | **High/Med** (measures need *no* voting record) |
 | **3 — Honest fallbacks** | Supervisor D4/D8, statewide races, challengers w/o records | funding + curated stated positions + endorsements, **labeled** | **Lower, labeled** |
 
@@ -119,17 +119,18 @@ Data quality varies by item type. Rather than hide that, we surface it as a **co
 3. **Your Ballot →** every item on the real SF ballot, each with a **recommendation pill** (e.g. "YES — 82% · High confidence") and a one-line why. *This is the "decoded ballot" wow.*
 4. **Drill into a candidate →** alignment + the standardized stances, the voting record, and the **funding graph** animating out. The **consistency "receipt"** ("said X, voted Y — and here's the donor who benefited") is the emotional beat.
 5. **Drill into a measure →** plain-language summary, who funds each side, and your alignment.
-6. **Change an answer →** everything re-scores live (personalization is real, not static).
+6. **Ask anything →** on any profile, ask a question ("how did they vote on housing?", "who funds the NO side?") and get a **cited answer** grounded in that item's evidence — it refuses rather than guesses when the record is silent.
+7. **Change an answer →** everything re-scores live (personalization is real, not static).
 
 ### 4.2 Screen map & routes (Next.js App Router)
 
 | Route | Screen | Notes |
 |---|---|---|
 | `/` | Landing | value prop; CTA → quiz (or → `/ballot` if a saved vector exists) |
-| `/quiz` | Onboarding quiz | 8 issues × {stance, importance}; writes the vector |
+| `/quiz` | Onboarding quiz | ballot-tailored issues × {stance, importance}; writes the vector |
 | `/ballot` | **Your Ballot (home/spine)** | every contest + measure; per-item recommendation pill + why; "ballot at a glance" summary |
-| `/candidate/[slug]` | Candidate profile | identity, alignment, stances, votes, funding graph, consistency, transparency |
-| `/measure/[slug]` | Measure profile | summary, for/against funding, alignment |
+| `/candidate/[slug]` | Candidate profile | identity, alignment, stances, votes, funding graph, consistency, transparency, **Ask panel** |
+| `/measure/[slug]` | Measure profile | summary, for/against funding, alignment, **Ask panel** |
 | `/methodology` | How scores work | the formulas + the "no hidden weighting" promise — doubles as a trust artifact for judges |
 
 Funding graph = a section/modal inside profiles (not its own route). State: a `UserValues` React context backed by `localStorage` (no auth). Scores are computed **client-side** from {user vector} × {stored item stances}, so changing answers re-scores instantly with no refetch.
@@ -164,7 +165,7 @@ Why this wins on every scored axis: **Demo** (bulletproof — no live dependency
 
 - **Ingestion (offline):** the `ingest-ballot` dynamic workflow — one pipeline per ballot item: *fetch ground truth → derive stances/scores → adversarially verify against source → write JSON*. (See §13.)
 - **Data store:** `/data/ballot.json`, `/data/candidates/<slug>.json`, `/data/measures/<slug>.json`, `/data/meta.json` (ballot id, generated-at, source versions).
-- **Config:** `/config/issues.ts` (the 8 issue axes + poles), `/config/scoring.config.ts` (weights, thresholds) — *all weighting lives here, nothing hidden.*
+- **Config:** `/config/issues.ts` (the ballot-tailored issue axes + poles — derived from the ballot, see §9), `/config/scoring.config.ts` (weights, thresholds) — *all weighting lives here, nothing hidden.*
 - **Scoring engine:** `/lib/scoring.ts` — pure functions (alignment, confidence, consistency, transparency), used identically by the app and the verifier.
 - **Recommendation:** deterministic scores client-side; AI rationale via `/api/recommend` (server route → Claude), with a deterministic templated fallback so the demo never breaks.
 - **Presentation:** Next.js App Router, mostly static; client components for quiz, live scoring, funding graph.
@@ -177,6 +178,8 @@ Why this wins on every scored axis: **Demo** (bulletproof — no live dependency
 type IssueId = 'healthcare'|'climate_energy'|'immigration'|'taxes_economy'
              | 'guns'|'reproductive'|'foreign_defense'|'civil_tech';
 
+// PROVISIONAL IssueId list above — REPLACED by the ballot-tailored issue set derived
+// in Task 4 (issues chosen bottom-up from the actual June-2026 SF ballot; see §9 + §16).
 // Each issue is a neutral axis with two labeled poles (-1 ↔ +1). Political
 // labeling of poles is irrelevant to the math; only consistent mapping matters.
 interface Issue { id: IssueId; label: string; poleNeg: string; polePos: string; }
@@ -184,6 +187,10 @@ interface Issue { id: IssueId; label: string; poleNeg: string; polePos: string; 
 interface UserValues {
   stances: Record<IssueId, number>;     // -1..+1
   importance: Record<IssueId, number>;  // 0..1  ("how much you care")
+  nuance?: Record<IssueId, {            // OPTIONAL agentic deepening (§9)
+    refinements?: Record<string, number>; // structured sub-positions → feed the REPRODUCIBLE score
+    note?: string;                        // free-text values note → conditions the AI rationale only
+  }>;
   updatedAt: string;
 }
 
@@ -236,9 +243,9 @@ interface Ballot { id: string; jurisdiction: string; date: string; items: Ballot
 |---|---|---|
 | Federal member identity & votes | **Congress.gov API** | needs free api.data.gov key (already in `.env.local`). *Member-level vote positions can be thin via Congress.gov — fall back to House Clerk roll-call XML; resolve the exact endpoint at ingest and record it in `NOTES.md`.* |
 | Federal money (candidate funding) | **OpenFEC API** | same key |
-| State legislator votes (e.g. Wiener) | **OpenStates v3 API** | for the state-record angle |
+| State legislator votes (Wiener) | **OpenStates v3 API** | the Tier-1 voting record. ✅ key in `.env.local`. **500 req/day cap** → cache raw responses, pull only curated issue-tagged key votes. See `NOTES.md`. |
 | Congress ↔ FEC ID join | **unitedstates/congress-legislators** (GitHub) | the crosswalk that makes joins correct |
-| SF measure funding (for/against) | **SF Ethics / DataSF SODA API** — FPPC Form 460 **Schedule D** | itemized support/oppose spend, 1998→present, queryable |
+| SF measure funding (for/against) | **SF Ethics via DataSF SODA** — Filers `4c8t-ngau`, Summary `9ggq-m8hp`, Transactions `pitq-e56w` | ✅ verified. Committee→measure link is by **committee name** (curate a small map at ingest); donor detail in Transactions. See `NOTES.md`. |
 | SF measure plain-language | **SF.gov official + SPUR + Ballotpedia** | summaries traceable to an official source |
 | Statewide / local candidate funding | SF Ethics + CA money sources | Tier 3, labeled |
 | ❌ Do **not** use | ProPublica Congress API (dead 2024), OpenSecrets API (dead 2025), Google Civic reps (dead 2025) | |
@@ -249,7 +256,7 @@ interface Ballot { id: string; jurisdiction: string; date: string; items: Ballot
 
 ## 8. The recommendation engine (the heart)
 
-Three layers. The math is reproducible; the AI is grounded; the verifier guarantees no hallucination. This unifies your three asks — *AI recommendations*, *confidence on everything*, *a breakdown of why*.
+Three layers, plus a shared Q&A surface (§8.4). The math is reproducible; the AI is grounded; the verifier guarantees no hallucination. This unifies your asks — *AI recommendations*, *confidence on everything*, *a breakdown of why*, and *ask-anything, with citations*.
 
 ### 8.1 Layer 1 — Deterministic scores (reproducible, no black box)
 
@@ -282,14 +289,28 @@ At **runtime** (live, personalized): `/api/recommend` sends {user values + the i
 
 A fresh agent (a) re-fetches sources and confirms the deterministic scores recompute, and (b) confirms every AI claim traces to a cited source and the recommendation direction matches the alignment math. Default **FAIL** if it can't confirm. This is both the trust guarantee *and* the Autonomy/Orchestration evidence (the "verifier caught it, builder fixed it" session-log moment).
 
+### 8.4 "Ask Procivic" — grounded Q&A on any profile
+
+Every candidate and measure profile has an **Ask** affordance: the user types a question — *"How did they vote on housing?"*, *"Who are their biggest donors?"*, *"Is this consistent with what they said?"*, *"What does a YES on Measure A actually fund?"* — and gets a **cited answer**.
+
+- **Grounded, not open-ended.** Generated by Claude (`/api/ask`) **constrained to that entity's evidence bundle** — the same verified `GroundedDigest` + structured votes/funding/statements/official summary that powers the recommendation (§8.2). No outside knowledge; **every claim carries a `SourceLink`** to the underlying vote / FEC or SF-Ethics record / official summary.
+- **Refuses rather than guesses.** If the evidence doesn't contain the answer, it says so (*"I don't have a record on that"*) and points to what *is* available — never fabricates. Enforced by the same groundedness check as §8.3.
+- **Personalized when useful.** The user's value vector is in context, so answers can connect to the user (*"you marked climate high-importance — here are their three climate votes"*) while staying factual and cited.
+- **Reuses the AI stack — no second pipeline.** Same evidence bundle, same citation components, same groundedness guarantee as the recommendation engine. One grounding contract, two surfaces: the auto recommendation *and* the user-asked answer.
+- **Intelligently-selected starter questions** seed the box — *chosen per profile, not hardcoded.* At ingest, a small pool of candidate questions is generated from that entity's grounded evidence (so every suggestion is guaranteed answerable with citations — no dead ends); at view time the top ~3–5 are **ranked by the user's value vector + the entity's most notable facts** (a big consistency gap, lopsided funding, a pivotal vote). So a housing-focused user sees housing questions first, and a measure with one-sided money surfaces *"who's funding the opposition?"* Same evidence bundle — no separate pipeline.
+
+**Why this is NOT a banned "RAG app" or "education chatbot":** it's a scoped, cited affordance *inside* a profile, secondary to the ballot-verdict centerpiece — the product's primary action stays "values in → ballot decoded," not "chat with a bot." Answers are grounded in a small, curated, verified evidence set with mandatory citations: a trust feature, not the product.
+
 ---
 
 ## 9. Preference elicitation (the quiz)
 
-- **v1:** ~8 issues, each a single question with **a stance input (Likert slider, −1..+1) + an importance control** ("how much do you care": low/med/high → 0/0.5/1). ~60s. The importance weights make alignment dramatically more personal for little build cost.
+- **v1:** the **ballot-tailored issue set** (derived bottom-up from the enumerated ballot so every question moves ≥1 real recommendation — see Task 4; ~8–12 issues spanning federal + state + local), each a single question with **a stance input (Likert slider, −1..+1) + an importance control** ("how much do you care": low/med/high → 0/0.5/1). ~60s. The importance weights make alignment dramatically more personal for little build cost.
 - **Persisted** to `localStorage`; **refinable anytime** (a "tune your values" affordance on the ballot); changing answers **re-scores everything live**.
 - **Efficient by design:** importance weighting means low-care issues barely move results, so the user's attention is spent where it changes the answer.
+- **Nuance beyond the slider (agentic elicitation).** A slider flattens conditional views (*"pro-climate — but not if it raises costs on working families"*). So any issue can be **deepened by chatting with an agent** that asks targeted clarifying questions and extracts two things: (a) *structured* refinements — sub-positions / conditional weights that feed the **reproducible** alignment score; and (b) a short free-text **values note** that conditions the live recommendation's "why for you." Optional and efficient — deepen only where it would change a recommendation. **Reproducibility-safe:** the score still computes from structured values; the free-text only enriches the already-AI-generated rationale. This is the inverse of the profile Q&A (§8.4) — there *you* ask about a candidate; here the agent asks about *you*. (Component: `PreferenceChat`.)
 - **Stretch (post-MVP):** adaptive follow-ups that only appear for high-importance issues; a "ballot at a glance" that highlights which 2–3 of your answers most drove your ballot.
+- **Beyond the quiz (roadmap → §17):** progressively enrich a user's profile over time — passively (which issues/candidates they explore in-app) and via opt-in connected sources — to sharpen alignment and *raise confidence* without more upfront questions. Consent-first and transparent (see §17).
 
 ---
 
@@ -313,7 +334,7 @@ A fresh agent (a) re-fetches sources and confirms the deterministic scores recom
 - Candidate variant: stances · voting record · funding graph · consistency · transparency.
 - Measure variant: plain-language summary · for/against funding · alignment.
 
-**Reusable components (build once):** `IssueBadge`, `ScoreChip`/`ScoreMeter` (one visual language for Alignment/Consistency/Transparency/Confidence), `ConfidenceBadge`, `BallotItemCard` (candidate + measure variants), `RecommendationPill` ("YES · 82% · High"), `StanceBar`, `VoteRow`, `SourceLink`/`CitationChip` (reused everywhere — trust), `ContradictionCallout` (the receipt), `FundingGraph`, `WhyBreakdown` (the expandable rationale).
+**Reusable components (build once):** `IssueBadge`, `ScoreChip`/`ScoreMeter` (one visual language for Alignment/Consistency/Transparency/Confidence), `ConfidenceBadge`, `BallotItemCard` (candidate + measure variants), `RecommendationPill` ("YES · 82% · High"), `StanceBar`, `VoteRow`, `SourceLink`/`CitationChip` (reused everywhere — trust), `ContradictionCallout` (the receipt), `FundingGraph`, `WhyBreakdown` (the expandable rationale), `AskPanel` (ask-a-question box + intelligently-selected starter prompts), `CitedAnswer` (answer with inline `SourceLink` citations — shared by `WhyBreakdown` and the Ask panel).
 
 ---
 
@@ -326,7 +347,7 @@ A fresh agent (a) re-fetches sources and confirms the deterministic scores recom
 | Graph | react-force-graph / d3-force |
 | Data store | **Static JSON in-repo** (`/data`) — no DB |
 | User state | `localStorage` + React context — no auth, no DB |
-| AI rationale | **Claude via a Next.js route handler** (`/api/recommend`), build-day credits; deterministic fallback |
+| AI rationale & Q&A | **Claude via Next.js route handlers** (`/api/recommend`, `/api/ask`), build-day credits; both constrained to a verified evidence bundle; `recommend` has a deterministic fallback |
 | Deploy | **Vercel** (GitHub integration; every push auto-deploys) |
 | Data keys | `api.data.gov` (Congress.gov + OpenFEC) in `.env.local` (gitignored) |
 
@@ -342,7 +363,7 @@ A fresh agent (a) re-fetches sources and confirms the deterministic scores recom
 2. **Quiz → alignment + confidence** on that candidate (live re-scoring).
 3. **Full ballot view** — every June-2026 SF item listed, each with a recommendation pill + why → drill-in. **(Goal 2 — the spine.)**
 4. **Measure profiles** — plain-language + for/against funding + alignment for the 4 measures.
-5. **Consistency + transparency** (Tier-1) + the **receipt** + **AI rationale** polish.
+5. **Consistency + transparency** (Tier-1) + the **receipt** + **AI rationale** + the **Ask-a-profile grounded Q&A** (reuses the §8 evidence bundle).
 6. **UI polish pass + methodology page + share card.** **(Goal 3.)**
 
 > Slices 1–3 are the real target (a personalized ballot with deep profiles + funding graph). 4–6 are layered wins. You always have a complete, beautiful, demo-able product.
@@ -371,7 +392,7 @@ Machine-verifiable PASS/FAIL gates; a verifier re-fetches source + the live URL 
 - **Profiles:** candidate → vote-derived stances, voting record, funding graph; measure → plain-language summary + for/against funding + alignment. Both share the profile shell.
 - **Data correctness (N=5 seeded items):** identity matches source; ≥5 displayed votes match the real roll-call; top donors/funding match OpenFEC/SF-Ethics within rounding; the Congress↔FEC join is correct; measure funding matches SF Ethics within rounding.
 - **Score reproducibility:** alignment recomputes from (vector × stances); confidence inputs shown; consistency traces to a specific statement + roll-call(s); transparency components shown individually; **no hidden weighting** (all weights in config / methodology page).
-- **AI groundedness:** every claim in a recommendation traces to a cited source in the item's digest; recommendation direction matches the alignment math.
+- **AI groundedness:** every claim in a recommendation *and every answer in the Ask panel* traces to a cited source in the item's evidence bundle; the Ask panel **refuses** (rather than fabricates) when the evidence lacks the answer; recommendation direction matches the alignment math.
 - **UI quality:** layout holds at 375px + 1280px; Lighthouse a11y ≥90 on home + a profile; one design system.
 - **Demo readiness:** the scripted ~60s path runs end-to-end on the live URL with no code change.
 - **Orchestration evidence (scored, not gates):** `RUBRIC.md` was the `/goal` and is in the repo; the verify workflow is in the repo; the session log shows ≥1 verifier-caught failure the builder then fixed.
@@ -384,19 +405,39 @@ Machine-verifiable PASS/FAIL gates; a verifier re-fetches source + the live URL 
 |---|---|
 | Live API fails/rate-limits on stage | **Precompute + commit the data store**; app reads static JSON, hits no source API at request time. |
 | Member-level vote data thin via Congress.gov | Fall back to House Clerk roll-call XML; resolve endpoint at ingest, record in `NOTES.md`. |
-| AI hallucinates a recommendation | AI constrained to the pre-verified digest; verifier checks groundedness; deterministic fallback. |
+| AI hallucinates a recommendation **or Q&A answer** | Both constrained to the pre-verified evidence bundle; verifier checks groundedness; mandatory citations; the Ask panel refuses when evidence is absent; `recommend` has a deterministic fallback. |
 | Non-incumbents have no voting record | Tier-3 fallback (funding + stated positions + endorsements), **labeled**, with low confidence shown honestly. |
 | Scope creep (solo, ~6 hr) | Vertical slices 1–3 are the target; 4–6 are bonus; cut from the bottom. |
 | "Dashboard" / "editorializing" perception | Input→derived-verdict centerpiece; never the app's own opinion; methodology page shows every formula. |
+| Q&A reads as a banned "RAG app" / chatbot | Cited, evidence-scoped affordance *inside* a profile, secondary to the ballot-verdict centerpiece; primary action stays "values in → ballot decoded." |
 | Funding-graph polish eats time | One reusable `FundingGraph`; graceful bar-list fallback; fixed polish slice, not endless fiddling. |
 
 ---
 
-## 16. Open decisions (for your review/edit)
+## 16. Key decisions (resolved 2026-06-13)
 
-1. **Demo precinct/district** — which SF precinct's exact ballot to feature, chosen for the richest Tier-1 incumbent record. *(Default: a CA-15/Mullin or CA-11/Wiener-state-record precinct — pick at ingest.)*
-2. **AI rationale: live vs. precomputed.** Design says **live `/api/recommend` with a deterministic fallback** (shows the AI working — good for demo). Alternative: precompute per-item rationales for a demo profile (max robustness, less "live AI"). 
-3. **The 8 issues** — list is `healthcare, climate/energy, immigration, taxes/economy, guns, reproductive rights, foreign policy/defense, civil liberties & tech`. Edit to taste; some map awkwardly onto *local* measures (a local-issues set — housing, transit, public safety, taxes — may fit SF measures better; we could use a hybrid issue set).
-4. **How directive the recommendation reads** — confirmed *explicit but grounded* ("Recommended for you: YES"). Dial the wording warmer/cooler here.
-5. **Share card** (stretch) — "my ballot / my rep's alignment" as an exportable image. In or out?
-6. **`RUBRIC.md`** — I'll extract §14 into a standalone `RUBRIC.md` (the `/goal`) after you've reviewed this doc, so the two stay in sync.
+1. **Demo precinct/district** — *in flight:* being chosen now in **Task 2** (enumerate the ballot → pick the precinct whose congressional race gives the richest Tier-1 incumbent record).
+2. **AI rationale: live vs. precomputed** — ✅ **Live** `/api/recommend`, with the deterministic fallback as the safety net. Shows the AI working on stage. 
+3. **Issue set** — ✅ **Ballot-tailored.** Issues are derived **bottom-up from the enumerated ballot** so every quiz question moves ≥1 real recommendation and every item has alignment signal (spans federal + state + local). The concrete list is finalized in **Task 4**, fed by Task 2 — *supersedes the provisional 8 national issues sketched in §6.*
+4. **Recommendation language** — ✅ **Alignment-forward** wording (e.g., "Strongly aligns with you"); exact phrasing finalized after seeing it live. Grounded/non-editorializing either way.
+5. **Share card** — ✅ **Stretch / nice-to-have** (in §17 roadmap; build only if time allows).
+6. **Ask-a-profile Q&A** — ✅ **Personalized + cited**, with **intelligently-selected starter questions** (§8.4) — generated then ranked per user, never hardcoded.
+7. **`RUBRIC.md`** — ✅ Extracting §14 into a standalone `RUBRIC.md` (the `/goal`) now that the doc is locked (Task 5).
+
+---
+
+## 17. Roadmap (post-v1 — pitch-worthy "where this goes")
+
+Not in the demo, but the natural next steps — worth highlighting in the pitch to show Procivic is a *platform*, not a one-ballot toy.
+
+- **Progressive user enrichment (the flagship next feature).** The initial quiz is just the cold-start. Over time Procivic learns a richer, more accurate value profile so recommendations get sharper and **confidence rises** — with *no* extra upfront burden on the user:
+  - **Passive / behavioral:** which issues, candidates, and measures the user explores in-app refine the inferred importance weights.
+  - **Active / deepening:** optional longer questionnaires and adaptive follow-ups, focused on the issues that most move *their* ballot.
+  - **Connected (opt-in):** with explicit consent, sources that reveal civic priorities — exact address (precise ballot), registration/party, causes followed — fill in the vector.
+  - **Privacy-first, non-negotiable:** consent-gated, transparent ("here's what we used and why"), user-inspectable and deletable, local-first where possible. A political-values profile is sensitive; trust *is* the product, so enrichment is always opt-in and explained. This guardrail is part of the feature, not a footnote.
+- **Address-based ballot lookup** — any voter's exact ballot, not just the demo precinct.
+- **Multi-jurisdiction** — generalize the pipeline to other CA/US ballots (the architecture already supports it; it's a data-coverage problem).
+- **"Donations → contracts" edge** — extend the funding graph via USAspending ("donated, then won a contract").
+- **Richer money & influence data** — sources that are alive but out-of-scope for the one-day CA-11 build: **Stanford DIME** (donor + candidate ideology / CFscores), **LittleSis** (who's-connected-to-whom networks), **ProPublica Nonprofit Explorer** (990s → which orgs fund which nonprofits), **Senate LDA** (lobbying), **Cal-Access** (CA state campaign finance). *(Note: **OpenSecrets' API is dead as of 2025** — its industry classifications aren't available; we approximate "industry" by clustering FEC `employer`/`occupation`.)*
+- **Shareable result card** — export "my ballot / my rep's alignment" as an image.
+- **Local-first depth** — SF Board of Supervisors voting records (legistar) for true local accountability profiles.
