@@ -1,3 +1,94 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*
+ * Procivic "Civic Daylight" tokens (see BRAND.md).
+ * shadcn semantic tokens live as HSL CSS variables so the whole UI is one themeable system.
+ * The brand/accent/signal ramps are Tailwind hex colors (tailwind.config.ts).
+ */
+@layer base {
+  :root {
+    --background: 220 40% 99%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* primary = brand-500 */
+    --primary: 216 92% 57%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 96%;
+    --secondary-foreground: 222 47% 16%;
+
+    --muted: 220 20% 96%;
+    --muted-foreground: 215 16% 42%;
+
+    /* destructive = signal-500 */
+    --destructive: 353 77% 57%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 18% 90%;
+    --input: 220 18% 90%;
+    --ring: 216 92% 57%;
+
+    --radius: 0.75rem;
+
+    --font-sans: "system-ui", sans-serif;
+    --font-mono: "ui-monospace", monospace;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01";
+    min-height: 100vh;
+    /* gradient-aurora: soft, blurred brand + accent (+ faint signal) blobs on near-white */
+    background-image:
+      radial-gradient(40rem 40rem at 8% -8%, rgb(46 125 246 / 0.10), transparent 60%),
+      radial-gradient(38rem 38rem at 100% 0%, rgb(139 92 246 / 0.10), transparent 55%),
+      radial-gradient(34rem 34rem at 50% 120%, rgb(230 61 80 / 0.05), transparent 60%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+
+  /* Numerals align in figures/scores. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-mono);
+  }
+
+  ::selection {
+    background-color: rgb(139 92 246 / 0.22);
+  }
+}
+
+@layer components {
+  /* Tasteful glassmorphism surface. */
+  .glass {
+    @apply border border-white/50 bg-white/70 shadow-elev-2 backdrop-blur-md;
+  }
+
+  /* Gradient text for hero / brand moments. */
+  .text-gradient {
+    @apply bg-gradient-decoded bg-clip-text text-transparent;
+  }
+
+  /* Thin focus ring helper for interactive custom elements. */
+  .focus-ring {
+    @apply outline-none ring-offset-2 ring-offset-background focus-visible:ring-2 focus-visible:ring-ring;
+  }
+}

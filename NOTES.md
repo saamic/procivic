@@ -35,3 +35,13 @@
 
 ## Decisions
 - Scope locked (DESIGN §16): CA-11 SF ballot, tiered data + confidence, **live** AI recommendations + verifier, ballot-tailored issues, alignment-forward language, personalized + intelligently-selected Q&A.
+
+## Ingest run 1 (2026-06-13) — results + verifier catches
+Ran `ingest-ballot` workflow. Raw responses cached to `/data/raw/` (do NOT re-fetch — reuse). Outputs in `/data/candidates|measures/`.
+- **Wiener FEC committee = `C00909283`** (2026 cycle; the verifier aggregated 3,198 itemized-individual Schedule A rows). **Total receipts = $3,958,852.97** ✅ verified. Committee→candidate join ✅. Identity ✅.
+- **OpenStates votes ✅** — 10 bills, one per issue (SB 423 housing, SB 43 homelessness, SB 584 business_tax, SB 799 inequality, SB 867 city_fiscal, SB 411 govt_reform, SB 253 climate, SB 770 healthcare, SB 227 immigration, SB 362 civil_democracy). All cached in `/data/raw/os_*`.
+  - ⚠️ **All 10 derived stances = +1.0** (one Yea bill per issue → no variation). For a credible demo + the Slice-5 consistency *receipt* (needs a stated≠voted gap), enrich with MORE bills/issue incl. some Nays before Slice 5. Math is correct; richness is the gap.
+- ❌ **VERIFIER CAUGHT — Wiener `funding.topDonors` wrong** (F3): ingest summed only a subset of each donor's txns. **Corrected top donors (re-aggregated from FEC, use these):** ActBlue conduit $27,735.02; Ceron Uribe, Juan (OpenAI) $14,000; Filan, Daniel $14,000; Abele, Emma $14,000; You, Joshua $12,500; Wong, Carol $10,700; Cohen, Michael (GM) $10,325; then a $10,300 max-out cluster: Seibel/Y Combinator, Larsen/Ripple, Goldman John, Goldman Marcia, MacInnis Charles, Blumenrose Benjamin, Kahn Matthew, Mason Andrew. → **FIX: aggregate ALL Schedule A individual rows per (name,employer); rank by summed amount.**
+- ❌ **VERIFIER CAUGHT — Prop D `result` %** : stored 46.36/53.64 doesn't match its cited Wikipedia source (Wikipedia final: YES 47.18% / NO 52.82%, 118,633 / 132,817 of 251,450). → **FIX: use 47.18/52.82 and cite Wikipedia, OR cite the snapshot the 46.36 came from.** Prop D committee totals ✅ (Support "Yes on D – Stand Up for SF" $2,990,487.03; Oppose "Yes on C, No on D" $6,075,009.05), side attribution ✅, donors ✅.
+- ✅ **Props A, B, C** fully verified (summaries faithful, committee totals match DataSF, sides correct).
+- **DataSF Prop A filer = `215726436`; Prop D filers = support `214966146` / oppose `215118470`** (cached).

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Procivic icon">
+  <title>Procivic icon</title>
+  <defs>
+    <linearGradient id="pcGradI" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2e7df6"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Full-bleed rounded tile for crisp favicon rendering -->
+  <rect x="2" y="2" width="60" height="60" rx="15" ry="15" fill="url(#pcGradI)"/>
+
+  <!-- Bold ballot checkmark, simplified for small sizes -->
+  <path d="M18 33 L28 44 L47 21"
+        fill="none" stroke="#ffffff" stroke-width="7"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
